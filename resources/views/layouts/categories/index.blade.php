@@ -30,6 +30,7 @@
       @endforeach
     </tbody>
   </table>
+  {{$categories->links('pagination')}}
   @else
   <h4>Chưa có người dùng nào được tạo!</h4>
 @endif

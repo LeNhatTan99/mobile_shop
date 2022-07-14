@@ -9,10 +9,11 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
+        <th scope="col">Role</th>
         <th scope="col">Email</th>
         <th scope="col">Phone number</th>
         <th scope="col">Address</th>
-       
+
         <th scope="col">Acction</th>
       </tr>
     </thead>
@@ -21,6 +22,7 @@
       <tr>
         <td>{{$user->id}}</td>
         <td>{{$user->name}}</td>
+        <td>{{$user->role->name}}</td>
         <td>{{$user->email}}</td>
         <td>{{$user->phone_number}}</td>
         <td>{{$user->address}}</td>
@@ -38,6 +40,8 @@
       @endforeach
     </tbody>
   </table>
+
+{{ $users->links('pagination') }}
   @else
   <h4>Chưa có người dùng nào được tạo!</h4>
 @endif

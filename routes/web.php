@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class])->name('home');
 Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
@@ -35,12 +35,21 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
-Route::group(['prefix' => 'admin'], function () {
+
+
+Route::group(['prefix' => 'admin','middleware' => ['auth','role:admin']], function () {
+    Route::get('/', function () {
+        return view('layouts.app');
+    });
     Route::resource('users','App\Http\Controllers\UserController');
     Route::resource('categories','App\Http\Controllers\CategoryController');
     Route::resource('brands','App\Http\Controllers\BrandController');
     Route::resource('products','App\Http\Controllers\ProductController');
+    Route::resource('images','App\Http\Controllers\ProductImageController');
     Route::resource('orders','App\Http\Controllers\OrderController');
     Route::resource('feedbacks','App\Http\Controllers\FeedbackController');
 });
+
+
+
 

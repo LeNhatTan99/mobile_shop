@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Pagination\Paginator;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Models\Role;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
+
 
 class UserController extends Controller
 {
@@ -28,7 +29,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::get();
+        $users = User::paginate(7);
         return view('layouts.users.index', ['users' => $users]);
     }
 
@@ -39,6 +40,7 @@ class UserController extends Controller
      */
     public function create()
     {
+
         return view('layouts.users.create');
     }
 
@@ -51,7 +53,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
        $password = Hash::make($request->password);
-       $data = array_merge($request->only('name', 'email','phone_number','address'), [
+       $data = array_merge($request->only('name','role_id','email','phone_number','address'), [
         'email_verified_at' => Carbon::now()->toDateTimeString(),
         'password' => $password
        ]);
@@ -59,9 +61,6 @@ class UserController extends Controller
        DB::beginTransaction();
        try {
             $user = User::create($data);
-            if ($request->roleIds) {
-                $user->roles()->sync($request->roleIds);
-            }
             DB::commit();
             return redirect()->route('users.index')->with('success', 'Create user success');
        } catch (\Exception $e) {
@@ -102,12 +101,14 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
+        $password = Hash::make($request->password);
+        $data = array_merge($request->only('name','role_id','email','phone_number','address'), [
+         'email_verified_at' => Carbon::now()->toDateTimeString(),
+         'password' => $password
+        ]);
         DB::beginTransaction();
         try {
-            $user->update($request->only('name' ,'email','phone_number','address','password'));
-            // if ($request->roleIds) {
-            //     $user->roles()->sync($request->roleIds);
-            // }
+            $user->update($data);
             DB::commit();
             return redirect()->route('users.index')->with('success', 'Update user success');
         } catch (\Exception $e) {

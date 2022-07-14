@@ -13,7 +13,8 @@
         @if ($errors->has('name'))
         <span class="text-danger">{{$errors->first('name')}}</span>
         @endif
-      </div>
+    </div>
+
       <div class="mb-3">
         <label  class="form-label">Email</label>
         <input type="email" name="email" class="form-control" >
@@ -43,6 +44,13 @@
         <input type="password" name="password" class="form-control" >
         @if ($errors->has('password'))
         <span class="text-danger">{{$errors->first('password')}}</span>
+        @endif
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Role ID</label>
+        <input type="number" name="role_id" class="form-control" placeholder="1: admin | 2: user">
+        @if ($errors->has('role_id'))
+        <span class="text-danger">{{$errors->first('role_id')}}</span>
         @endif
       </div>
 

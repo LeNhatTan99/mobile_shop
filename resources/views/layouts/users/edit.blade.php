@@ -46,6 +46,13 @@
         <span class="text-danger">{{$errors->first('password')}}</span>
         @endif
       </div>
+      <div class="mb-3">
+        <label  class="form-label">Role ID</label>
+        <input type="number" name="role_id" class="form-control" value="{{old('role_id',$user->role_id)}}">
+        @if ($errors->has('role_id'))
+        <span class="text-danger">{{$errors->first('role_id')}}</span>
+        @endif
+      </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

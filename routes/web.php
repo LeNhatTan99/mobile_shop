@@ -38,9 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::group(['prefix' => 'admin','middleware' => ['auth','role:admin']], function () {
-    Route::get('/', function () {
-        return view('layouts.app');
-    });
+    // Route::get('/', function () {
+    //     return view('layouts.app');
+    // });
     Route::resource('users','App\Http\Controllers\UserController');
     Route::resource('categories','App\Http\Controllers\CategoryController');
     Route::resource('brands','App\Http\Controllers\BrandController');
@@ -50,6 +50,12 @@ Route::group(['prefix' => 'admin','middleware' => ['auth','role:admin']], functi
     Route::resource('feedbacks','App\Http\Controllers\FeedbackController');
 });
 
-
+// Route::resource('users','App\Http\Controllers\UserController');
+// Route::resource('categories','App\Http\Controllers\CategoryController');
+// Route::resource('brands','App\Http\Controllers\BrandController');
+// Route::resource('products','App\Http\Controllers\ProductController');
+// Route::resource('images','App\Http\Controllers\ProductImageController');
+// Route::resource('orders','App\Http\Controllers\OrderController');
+// Route::resource('feedbacks','App\Http\Controllers\FeedbackController');
 
 

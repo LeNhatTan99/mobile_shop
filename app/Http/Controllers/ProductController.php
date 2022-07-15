@@ -58,9 +58,11 @@ class ProductController extends Controller
         ];
         DB::beginTransaction();
         try {
+
           $product =  Product::create($data);
           $product->categories()->sync($request->categoryIds);
           $product->brands()->sync($request->brandIds);
+          $file = $request->file('thumbnail')->storeAs('mobile_image/product_images', $request->name.'.'.'jpg');
             DB::commit();
             return redirect()->route('products.index')->with('success', 'Create product success');
         } catch (\Exception $e) {
@@ -121,6 +123,7 @@ class ProductController extends Controller
          try {
            $product ->update($data);
            $product->brands()->sync($request->brandIds);
+           $file = $request->file('thumbnail')->storeAs('mobile_image/product_images', $request->name.'.'.'jpg');
              DB::commit();
              return redirect()->route('products.index')->with('success', 'Create product success');
          } catch (\Exception $e) {

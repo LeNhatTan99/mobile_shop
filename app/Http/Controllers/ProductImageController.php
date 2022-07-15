@@ -17,6 +17,7 @@ class ProductImageController extends Controller
     public function index()
     {
         $product_images = Product_image::paginate(7);
+
         return view('layouts.product_images.index', ['product_images' => $product_images]);
     }
 
@@ -27,6 +28,7 @@ class ProductImageController extends Controller
      */
     public function create()
     {
+
         $products = Product::get();
         return view('layouts.product_images.create',['products' => $products]);
     }
@@ -47,9 +49,7 @@ class ProductImageController extends Controller
                'image'=>$request->image,
             ];
 
-            // $file = $request->file('image')->store('public/mobile_image');
-            $file = $request->get('id') . '.' . $request->file('image')->extension();
-            $request->file('image')->storeAs('public/mobile_image', $file);
+            $file = $request->file('image')->storeAs('mobile_image/product_images', $request->product_id.'.'.'jpg');
             $product_image = Product_image::create($data);
 
       DB::commit();
@@ -98,10 +98,10 @@ class ProductImageController extends Controller
             'product_id'=>$request->product_id ,
             'image'=>$request->image,
          ];
+
         DB::beginTransaction();
         try {
-            $file = $request->file('image')->store('public/mobile_image');
-
+            $file = $request->file('image')->storeAs('mobile_image/product_images', $request->product_id.'.'.'jpg');
             $product_image->update($data);
 
       DB::commit();

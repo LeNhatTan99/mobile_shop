@@ -40,8 +40,8 @@ class BrandController extends Controller
     {
         DB::beginTransaction();
         try {
-            $file = $request->file('logo');
-            $file->move('img','logo.jpg');
+
+            $file = $request->file('logo')->storeAs('mobile_image/logo', $request->name.'.'.'jpg');
             Brand::create($request->only(['name','logo']));
 
       DB::commit();
@@ -83,11 +83,13 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateUpdateBrandRequest $request, Brand $brand)
+    public function update(Request $request, Brand $brand)
     {
 
         DB::beginTransaction();
         try {
+
+             $file = $request->file('logo')->storeAs('mobile_image/logo', $request->name.'.'.'jpg');
             $brand->update($request->only(['name','logo']));
             DB::commit();
          return redirect()->route('brands.index')->with('success', 'Update brand success');;

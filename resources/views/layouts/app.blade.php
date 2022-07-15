@@ -22,7 +22,7 @@
         <style>
             .main-content .navbar-top {
                 position: relative;
-                background-color: #cf4d4da6;
+                background-color: #da1919a6;
             }
         </style>
     </head>

@@ -5,7 +5,7 @@
     {{session('error')}}
 </div>
 @endif
-<form action="{{route('brands.update',['brand'=>$brand->id])}}" method="POST">
+<form action="{{route('brands.update',['brand'=>$brand->id])}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="mb-3">

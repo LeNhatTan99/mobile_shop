@@ -105,7 +105,7 @@
                      Sản phẩm
                     </h1>
                     <p>
-                      Aenean scelerisque felis ut orci condimentum laoreet. Integer nisi nisl, convallis et augue sit amet, lobortis semper quam.
+                     scelerisque felis ut orci condimentum laoreet. Integer nisi nisl, convallis et augue sit amet, lobortis semper quam.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">

@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: #0c0c0c;
   background-color: #ffffff;
   overflow-x: hidden;
@@ -85,7 +85,10 @@ a:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-
+/* header dropdown */
+.dropdown-menu{
+ background-color: #ddd;
+}
 /*header section*/
 .hero_area {
   position: relative;
@@ -97,7 +100,7 @@ a:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding-left: 45px;
+
 }
 
 .hero_area .hero_social {
@@ -142,7 +145,6 @@ a:focus {
 
 .header_section {
   padding: 15px 0;
-  border-radius: 8px;
   background-image: linear-gradient(to right, #6047DF , #E5CCC3);
 }
 
@@ -298,7 +300,6 @@ a:focus {
       -ms-flex-align: center;
           align-items: center;
   padding: 32px 0;
-  border-radius: 8px;
   background-color: red;
   background: #ccc;
 }
@@ -924,4 +925,118 @@ a:focus {
 .footer_section .footer-info p a {
   color: inherit;
 }
-/*# sourceMappingURL=style.css.map */
+
+/* css detail */
+.wrapper {
+    height: 420px;
+    width: 654px;
+    margin: 50px auto;
+    border-radius: 7px 7px 7px 7px;
+    /* VIA CSS MATIC https://goo.gl/cIbnS */
+    -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  }
+
+  .product-img {
+    float: left;
+    height: 420px;
+    width: 327px;
+  }
+
+  .product-img img {
+    border-radius: 7px 0 0 7px;
+  }
+
+  .product-info {
+    float: left;
+    height: 420px;
+    width: 327px;
+    border-radius: 0 7px 10px 7px;
+    background-color: #ffffff;
+  }
+
+  .product-text {
+    height: 300px;
+    width: 327px;
+  }
+
+  .product-text h1 {
+    margin: 0 0 0 38px;
+    padding-top: 52px;
+    font-size: 34px;
+    color: #474747;
+  }
+
+  .product-text h1,
+  .product-price-btn p {
+    font-family: 'Bentham', serif;
+  }
+
+  .product-text h2 {
+    margin: 0 0 47px 38px;
+    font-size: 13px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #d2d2d2;
+    letter-spacing: 0.2em;
+  }
+
+  .product-text p {
+    height: 125px;
+    margin: 0 0 0 38px;
+    font-family: 'Playfair Display', serif;
+    color: #8d8d8d;
+    line-height: 1.7em;
+    font-size: 15px;
+    font-weight: lighter;
+    overflow: hidden;
+  }
+
+  .product-price-btn {
+    height: 103px;
+    width: 327px;
+    margin-top: 17px;
+    position: relative;
+    text-align: center;
+  }
+
+  .product-price-btn p {
+    display: inline-block;
+    position: absolute;
+    top: -13px;
+    height: 50px;
+    font-family: 'Trocchi', serif;
+    margin: 0 0 0 38px;
+    font-size: 28px;
+    font-weight: lighter;
+    color: #474747;
+  }
+
+  span {
+    display: inline-block;
+    font-family: 'Suranna', serif;
+
+  }
+
+  .product-price-btn .add_to_cart {
+
+    display: inline-block;
+    padding: 18px;
+    width: 176px;
+    text-align: center;
+    border-radius: 60px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #000;
+    background-color:  rgb(236, 218, 62);
+    cursor: pointer;
+    outline: none;
+  }
+
+  .product-price-btn .add_to_cart:hover {
+    background-color:red;
+  }

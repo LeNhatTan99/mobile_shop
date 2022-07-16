@@ -81,8 +81,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+
         return view('layouts.products.show', ['product' => $product]);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -151,4 +153,29 @@ class ProductController extends Controller
             return back()->with('error', 'Delete product failed');
         }
     }
+   /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function detail(Product $product)
+    {
+
+        $product=Product::find(1);
+        return view('frontend.detail', ['product' => $product])->with('product', $product);
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function cart()
+
+    {
+
+        return view('frontend.cart');
+    }
+
 }

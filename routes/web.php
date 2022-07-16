@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
 
 Auth::routes();
 
@@ -23,6 +20,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class])->name('home');
 Auth::routes();
 
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
@@ -38,9 +36,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::group(['prefix' => 'admin','middleware' => ['auth','role:admin']], function () {
-    // Route::get('/', function () {
-    //     return view('layouts.app');
-    // });
+    Route::get('/', function () {
+        return view('layouts.app');
+    });
     Route::resource('users','App\Http\Controllers\UserController');
     Route::resource('categories','App\Http\Controllers\CategoryController');
     Route::resource('brands','App\Http\Controllers\BrandController');
@@ -49,13 +47,10 @@ Route::group(['prefix' => 'admin','middleware' => ['auth','role:admin']], functi
     Route::resource('orders','App\Http\Controllers\OrderController');
     Route::resource('feedbacks','App\Http\Controllers\FeedbackController');
 });
-
-// Route::resource('users','App\Http\Controllers\UserController');
-// Route::resource('categories','App\Http\Controllers\CategoryController');
-// Route::resource('brands','App\Http\Controllers\BrandController');
-// Route::resource('products','App\Http\Controllers\ProductController');
-// Route::resource('images','App\Http\Controllers\ProductImageController');
-// Route::resource('orders','App\Http\Controllers\OrderController');
-// Route::resource('feedbacks','App\Http\Controllers\FeedbackController');
+//  Product detail
+Route::get('/detail', 'App\Http\Controllers\ProductController@detail')->name('detail');
+Route::get('/', 'App\Http\Controllers\HomeController@index');
+Route::get('/cart', 'App\Http\Controllers\ProductController@cart')->name('cart');
+Route::get('/add-to-cart/{id}', 'App\Http\Controllers\ProductController@addToCart')->name('addToCart');
 
 

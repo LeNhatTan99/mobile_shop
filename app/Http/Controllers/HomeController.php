@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
@@ -20,7 +22,10 @@ class HomeController extends Controller
      * @return \Illuminate\View\View
      */
     public function index()
+
     {
-        return view('frontend.index');
+        $categories = Category::get();
+        $products =Product::get();
+        return view('frontend.index',['products'=>$products,'categories'=>$categories]);
     }
 }

@@ -24,13 +24,13 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
   <!-- font awesome style -->
-  <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" />
+  <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet" />
 
   <!-- Custom styles for this template -->
-  <link href="{{asset('css/style.css')}}" rel="stylesheet" />
+  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" />
 
   <!-- responsive style -->
-  <link href="{{asset('css/responsive.css')}}" rel="stylesheet" />
+  <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet" />
 
 </head>
 
@@ -40,7 +40,7 @@
         @csrf
     </form>
     @endauth
-
+@include('frontend.header')
 @yield('content')
 
   <!-- jQery -->

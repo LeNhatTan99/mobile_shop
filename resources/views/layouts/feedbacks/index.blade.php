@@ -1,28 +1,32 @@
 @extends('layouts.app')
 @section('content')
 
-<a href="{{route('brands.create')}}" class="btn btn-success">Tạo thêm thương hiệu</a>
-@if ($brands->count())
+<a href="{{route('feedbacks.create')}}" class="btn btn-success">Tạo phản hồi</a>
+@if ($feedbacks->count())
 
 <table class="table">
+    <h2>Phản hồi của khách hàng</h2>
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Logo</th>
-      <th scope="col">Acction</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Email</th>
+      <th scope="col">Số điện thoại</th>
+      <th scope="col">Nội dung</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($brands as $brand)
+      @foreach ($feedbacks as $feedback)
       <tr>
-        <td>{{$brand->id}}</td>
-        <td>{{$brand->name}}</td>
-        <td>{{$brand->logo}}</td>
+        <td>{{$feedback->id}}</td>
+          <td>{{$feedback->name}}</td>
+          <td>{{$feedback->email}}</td>
+          <td >{{$feedback->phone_number}}</td>
+          <td><span class="description">{{$feedback->content}}</span></td>
+
         <td>
-            <a href="{{route('brands.show',['brand'=>$brand->id])}}" class="btn btn-info">View</a>
-            <a href="{{route('brands.edit',['brand'=>$brand->id])}}" class="btn btn-primary">Edit</a>
-            <form action="{{route('brands.destroy',['brand'=>$brand->id])}}" method="POST" style="display: inline-block">
+            <a href="{{route('feedbacks.show',['feedback'=>$feedback->id])}}" class="btn btn-info">View</a>
+            <form action="{{route('feedbacks.destroy',['feedback'=>$feedback->id])}}" method="POST" style="display: inline-block">
             @csrf
             @method('delete')
                 <button class="btn btn-danger" type="submit">Delete</button>
@@ -33,7 +37,7 @@
     </tbody>
   </table>
   @else
-  <h4>Chưa có thương hiệu nào được tạo!</h4>
+  <h4>Chưa có phản hồi nào!</h4>
 @endif
 
   @endsection

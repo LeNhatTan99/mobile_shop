@@ -114,178 +114,199 @@
         <div class="container">
             <div class="heading_container heading_center">
                 <h2>
-                    Sản phẩm mới nhất
+                    Sản phẩm mới
                 </h2>
             </div>
+
             <div class="row">
-                <div class="col-md-6 ">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="images/w1.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Iphone 13 Pro Max
-                                </h6>
-                                <h6>
-                                    Giá:
-                                    <span>
-                                        $2000
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    Bán chạy nhất
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                @for ($i=1;$i<=2;$i++)
+           @if (isset($productNew))
+           @foreach ($productNew as $product )
 
-                <div class="col-sm-6 col-xl-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="images/w4.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Iphone 13
-                                </h6>
-                                <h6>
-                                    Giá:
-                                    <span>
-                                        $145
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    Mới
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                @endfor
+           <div class="col-sm-6 col-xl-3">
+               <div class="box">
+                   <a href="{{route('product.detail',[$product->slug])}}">
+                    {{-- <a href=""> --}}
+                       <div class="img-box">
+                           <img src="{{ asset('storage/' . $product->thumbnail) }}" alt="">
+                       </div>
+                       <div>
+                           <div class="product text-secondary">
+                               <span>
+                                   {{$product->name}}
+                               </span>
+                           </div>
+                           <div class="price product text-center">
+                               <span>
+                                 {{number_format($product->price)}} &#8363;
+                                   </span>
+                           </div>
+                          </div>
+                       <div class="new">
+                           <span>
+                               Mới
+                           </span>
+                       </div>
+                   </a>
+               </div>
+           </div>
 
-                {{-- Iphone --}}
+           @endforeach
+           @endif
 
-                <div class="heading">
-                    <h2>
-                        Điện thoại
-                    </h2>
-                </div>
-                @foreach ( $products as $product )
-                @foreach ($product->categories as $category)
-                @if ($category->id == 1)
-                <div class="col-sm-6 col-xl-3">
-                    <div class="box">
-                        <a href="{{route('detail',['product'=>$product->name])}}">
-                            <div class="img-box">
-                                <img src="{{$product->thumbnail}}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    {{$product->name}}
-                                </h6>
-                                <h6>
-                                    Giá:
-                                    <span>
-                                        {{number_format($product->price)}} &#8363;
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    Mới
-                                </span>
-                            </div>
-                        </a>
+
+                {{-- phone --}}
+                    <div class="heading_container " id="danhmucid1">
+                        <h2>
+                            Điện thoại
+                        </h2>
                     </div>
-                </div>
-                @endif
-                @endforeach
-                @endforeach
+
+                    @foreach ( $productMobile as $product )
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="box">
+                            <a href="{{route('product.detail',[$product->slug])}}">
+                                <div class="img-box">
+                                    <img src="{{ asset('storage/' . $product->thumbnail)}}" alt="">
+                                </div>
+                               <div>
+                                <div class="product text-secondary">
+                                    <span>
+                                        {{$product->name}}
+                                    </span>
+                                </div>
+
+                                <div class="price product ">
+                                    @if ($product->discount != 0 && $product->discount < $product->price)
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span>
+                                                {{number_format($product->discount)}}&#8363;
+                                              </span>
+                                            </div>
+                                            <div class="col-6">
+                                            <span class="text-secondary">
+                                                <del> {{ number_format( $product->price) }}&#8363;</del>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="new">
+                                        <p>
+                                            Giảm giá
+                                        </p>
+                                    </div>
+                                    @else
+                                    <div class="text-center">
+                                        <span>
+                                            {{number_format($product->price)}}&#8363;
+                                          </span>
+                                    </div>
+                                    @endif
+                                </div>
+                               </div>
+
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+
 
                 {{-- Máy tính bảng --}}
-                <div class="heading">
-                    <h2>
-                        Máy tính bảng
-                    </h2>
-                </div>
-                @foreach ( $products as $product )
-                @foreach ($product->categories as $category)
-                @if ($category->id == 2)
-                <div class="col-sm-6 col-xl-3">
-                    <div class="box">
-                        <a href="{{route('detail',['product'=>$product->name])}}">
-                            <div class="img-box">
-                                <img src="{{$product->thumbnail}}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    {{$product->name}}
-                                </h6>
-                                <h6>
-                                    Giá:
-                                    <span>
-                                        {{number_format($product->price)}} &#8363;
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    Mới
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                @endif
-                @endforeach
-                @endforeach
-                {{-- Phụ kiện --}}
-                <div class="heading">
-                    <h2>
-                        Phụ kiện
-                    </h2>
-                </div>
-                @foreach ( $products as $product )
-                @foreach ($product->categories as $category)
-                @if ($category->id == 3)
-                <div class="col-sm-6 col-xl-3">
-                    <div class="box">
-                        <a href="{{route('detail',['product'=>$product->name])}}">
-                            <div class="img-box">
-                                <img src="{{$product->thumbnail}}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    {{$product->name}}
-                                </h6>
-                                <h6>
-                                    Giá:
 
-                                    <span>
-                                        {{number_format($product->price)}} &#8363;
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    Mới
-                                </span>
-                            </div>
-                        </a>
+                    <div class="heading_container " id="danhmucid2">
+                        <h2>
+                            Máy tính bảng
+                        </h2>
                     </div>
-                </div>
-                @endif
-                @endforeach
-                @endforeach
+                    @foreach ( $productTablet as $product )
+
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="box">
+                   <a href="{{route('product.detail',[$product->slug])}}">
+                                <div class="img-box">
+                                    <img src="{{ asset('storage/' . $product->thumbnail)}}" alt="">
+                                </div>
+                                <div>
+                                    <div class="product text-secondary">
+                                        <span>
+                                            {{$product->name}}
+                                        </span>
+                                    </div>
+                                    <div class="price product ">
+                                        @if ($product->discount != 0 && $product->discount < $product->price)
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span>
+                                                    {{number_format($product->discount)}}&#8363;
+                                                  </span>
+                                                </div>
+                                                <div class="col-6">
+                                                <span class="text-secondary">
+                                                    <del> {{ number_format( $product->price) }}&#8363;</del>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        @else
+                                        <div class="text-center">
+                                            <span>
+                                                {{number_format($product->price)}}&#8363;
+                                              </span>
+                                        </div>
+                                        @endif
+                                    </div>
+                                   </div>
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+
+                {{-- Phụ kiện --}}
+
+                    <div class="heading_container" id="danhmucid3">
+                        <h2>
+                            Phụ kiện
+                        </h2>
+                    </div>
+                    @foreach ( $productAccessory as $product )
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="box">
+                            <a href="{{route('product.detail',[$product->slug])}}">
+                                <div class="img-box">
+                                    <img src="{{ asset('storage/' . $product->thumbnail)}}" alt="">
+                                </div>
+                                <div>
+                                    <div class="product text-secondary">
+                                        <span>
+                                            {{$product->name}}
+                                        </span>
+                                    </div>
+                                    <div class="price product ">
+                                        @if ($product->discount != 0 && $product->discount < $product->price)
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span>
+                                                    {{number_format($product->discount)}}&#8363;
+                                                  </span>
+                                                </div>
+                                                <div class="col-6">
+                                                <span class="text-secondary">
+                                                    <del> {{ number_format( $product->price) }}&#8363;</del>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        @else
+                                        <div class="text-center">
+                                            <span>
+                                                {{number_format($product->price)}}&#8363;
+                                              </span>
+                                        </div>
+                                        @endif
+                                    </div>
+                                   </div>
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+
             <div class="btn-box">
                 <a href="">
                     Xem tất cả
@@ -310,7 +331,7 @@
                     <div class="detail-box">
                         <div class="heading_container">
                             <h2>
-                                About Us
+                                Giới thiệu
                             </h2>
                         </div>
                         <p>
@@ -322,9 +343,6 @@
                             hidden in
                             the middle of text. All
                         </p>
-                        <a href="">
-                            Read More
-                        </a>
                     </div>
                 </div>
             </div>
@@ -332,129 +350,6 @@
     </section>
 
     <!-- end about section -->
-
-
-    <!-- contact section -->
-
-    <section class="contact_section ">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form_container">
-                        <div class="heading_container">
-                            <h2>
-                                Phản hồi
-                            </h2>
-                        </div>
-                        <form action="">
-                            <div>
-                                <input type="text" placeholder="Họ và tên " />
-                            </div>
-                            <div>
-                                <input type="email" placeholder="Email" />
-                            </div>
-                            <div>
-                                <input type="text" placeholder="Số điện thoại" />
-                            </div>
-                            <div>
-                                <input type="text" class="message-box" placeholder="Nội dung" />
-                            </div>
-                            <div class="d-flex ">
-                                <button>
-                                    Gửi
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- end contact section -->
-
-
-    <!-- footer section -->
-    <footer class="footer_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-lg-3 footer-col">
-                    <div class="footer_detail">
-                        <h4 id="contact">
-                            Liên hệ
-                        </h4>
-
-                        <div class="footer_social">
-                            <a href="">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-instagram" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 footer-col">
-                    <div class="footer_contact">
-                        <h4>
-                            Tìm cửa hàng
-                        </h4>
-                        <div class="contact_link_box">
-                            <a href="">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <span>
-                                    Đà Nẵng
-                                </span>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                <span>
-                                    0702471720
-                                </span>
-                            </a>
-                            <a href="">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <span>
-                                    mobileshop@gmail.com
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 footer-col">
-                    <div class="footer_contact">
-                        <h4>
-                            Đăng ký nhận tin
-                        </h4>
-                        <form action="#">
-                            <input type="text" placeholder="Nhập email" />
-                            <button type="submit">
-                                Đăng ký
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 footer-col">
-                    <div class="footer_contact">
-                        <h4>
-                            Thời gian mở cửa
-                        </h4>
-                        <div>
-                            <p>Hàng ngày: 8.30 AM - 8.30 PM</p>
-                            <p>Chủ nhật: 8.30 AM - 8.30 PM</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- footer section -->
+    @include('frontend.feedback');
+    @include('frontend.footer');
 @endsection

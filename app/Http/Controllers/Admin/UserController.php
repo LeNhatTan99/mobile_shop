@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Pagination\Paginator;
 use App\Http\Requests\UserRequest;
@@ -12,15 +12,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 
 class UserController extends Controller
 {
-
-    // public function __construct()
-    // {
-    //     $this->authorizeResource(User::class);
-    // }
 
     /**
      * Display a listing of the resource.

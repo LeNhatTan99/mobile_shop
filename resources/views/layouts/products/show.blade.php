@@ -5,20 +5,20 @@
         <tbody>
 
             <tr>
-                <th scope="col">Name</th>
+                <th scope="col">Tên sản phẩm</th>
                 <td>{{ $product->name }}</td>
             </tr>
             <tr>
-                <th scope="col">Category</th>
+                <th scope="col">Danh mục sản phẩm</th>
 
                 <td>
                     @foreach ($product->categories as $category)
-                        {{ $category->name }} <br>
+                        {{ $category->category_name }} <br>
                     @endforeach
                 </td>
             </tr>
             <tr>
-                <th scope="col">Brand</th>
+                <th scope="col">Thương hiệu</th>
                 <td>
                     @foreach ($product->brands as $brand)
                         {{ $brand->name }} <br>
@@ -28,31 +28,31 @@
             </tr>
 
             <tr>
-                <th scope="col">Price</th>
+                <th scope="col">Giá</th>
                 <td>{{ $product->price }}</td>
             </tr>
             <tr>
-                <th scope="col">Discount</th>
+                <th scope="col">Giá khuyến mãi</th>
                 <td>{{ $product->discount }}</td>
             </tr>
 
             <tr>
-                <th scope="col">Color</th>
+                <th scope="col">Màu sắc</th>
                 <td>{{ $product->color }}</td>
             </tr>
 
             <tr>
-                <th scope="col">Thumbnail</th>
+                <th scope="col">Hình ảnh</th>
                 <td>{{ $product->thumbnail }}</td>
             </tr>
 
             <tr>
-                <th scope="col">Description</th>
+                <th scope="col">Mô tả</th>
                 <td>{{ $product->description }}</td>
             </tr>
 
             <tr>
-                <th scope="col">Inventory</th>
+                <th scope="col">Số lượng</th>
                 <td>{{ $product->inventory }}</td>
 
             </tr>

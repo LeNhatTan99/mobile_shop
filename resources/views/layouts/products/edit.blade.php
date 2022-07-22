@@ -10,7 +10,7 @@
     @csrf
     @method('put')
     <div class="mb-3">
-        <label  class="form-label">Name</label>
+        <label  class="form-label">Tên sản phẩm</label>
         <input type="text" name="name" class="form-control"  value="{{old('name',$product->name)}}">
         @if ($errors->has('name'))
         <span class="text-danger">{{$errors->first('name')}}</span>
@@ -18,7 +18,7 @@
       </div>
 
       <div class="mb-3">
-        <label  class="form-label">Price</label>
+        <label  class="form-label">Giá</label>
         <input type="number" name="price" class="form-control" value="{{old('price',$product->price)}}">
         @if ($errors->has('price'))
         <span class="text-danger">{{$errors->first('price')}}</span>
@@ -26,14 +26,14 @@
       </div>
 
       <div class="mb-3">
-        <label  class="form-label">Discount</label>
+        <label  class="form-label">Giá khuyến mãi</label>
         <input type="number" name="discount" class="form-control" value="{{old('discount',$product->discount)}}">
         @if ($errors->has('discount'))
         <span class="text-danger">{{$errors->first('discount')}}</span>
         @endif
       </div>
       <div class="mb-3">
-        <label  class="form-label">Color</label>
+        <label  class="form-label">Màu sắc</label>
         <input type="text" name="color" class="form-control" value="{{old('color',$product->color)}}">
         @if ($errors->has('color'))
         <span class="text-danger">{{$errors->first('color')}}</span>
@@ -41,7 +41,7 @@
       </div>
 
       <div class="mb-3">
-        <label  class="form-label">Thumbnail</label>
+        <label  class="form-label">Hình ảnh</label>
         <input type="file" name="thumbnail" class="form-control" value="{{old('thumbnail',$product->thumbnail)}}">
         @if ($errors->has('thumbnail'))
         <span class="text-danger">{{$errors->first('thumbnail')}}</span>
@@ -49,7 +49,7 @@
       </div>
 
       <div class="mb-3">
-        <label  class="form-label">Description</label>
+        <label  class="form-label">Mô tả</label>
         <textarea name="description"  cols="30" rows="10" class="form-control">{{old('description',$product->description)}}</textarea>
         @if ($errors->has('description'))
         <span class="text-danger">{{$errors->first('description')}}</span>
@@ -57,7 +57,15 @@
       </div>
 
       <div class="mb-3">
-        <label  class="form-label">Inventory</label>
+        <label  class="form-label">Trạng thái</label>
+        <input type="number" name="status" class="form-control" value="{{old('status',$product->status)}}" placeholder="0: Bình thường | 1: Mới ">
+        @if ($errors->has('status'))
+        <span class="text-danger">{{$errors->first('status')}}</span>
+        @endif
+      </div>
+
+      <div class="mb-3">
+        <label  class="form-label">Số lượng</label>
         <input type="number" name="inventory" class="form-control" value="{{old('inventory',$product->inventory)}}">
         @if ($errors->has('inventory'))
         <span class="text-danger">{{$errors->first('inventory')}}</span>
@@ -73,7 +81,7 @@
             <div class="form-check">
                 <input id="flexCheckCheckedCategory{{$category->id}}" class="form-check-input" type="radio" value="{{ $category->id }}" name="categoryIds[]">
                 <label class="form-check-label" for="flexCheckCheckedCategory{{$category->id}}">
-                  {{ $category->name }}
+                  {{ $category->category_name}}
                 </label>
               </div>
             @endforeach
@@ -100,7 +108,7 @@
       </div>
       @endif
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
   </form>
 </div>
 @endsection

@@ -8,7 +8,7 @@
 <form action="{{route('users.store')}}" method="POST">
     @csrf
     <div class="mb-3">
-        <label  class="form-label">Name</label>
+        <label  class="form-label">Tên</label>
         <input type="text" name="name" class="form-control" >
         @if ($errors->has('name'))
         <span class="text-danger">{{$errors->first('name')}}</span>
@@ -24,7 +24,7 @@
       </div>
 
       <div class="mb-3">
-        <label  class="form-label">Phone number</label>
+        <label  class="form-label">Số điện thoại</label>
         <input type="text" name="phone_number" class="form-control" >
         @if ($errors->has('phone_number'))
         <span class="text-danger">{{$errors->first('phone_number')}}</span>
@@ -32,7 +32,7 @@
       </div>
 
       <div class="mb-3">
-        <label  class="form-label">Address</label>
+        <label  class="form-label">Địa chỉ</label>
         <input type="text" name="address" class="form-control" >
         @if ($errors->has('address'))
         <span class="text-danger">{{$errors->first('address')}}</span>
@@ -40,7 +40,7 @@
       </div>
 
       <div class="mb-3">
-        <label  class="form-label">Password</label>
+        <label  class="form-label">Mật khẩu</label>
         <input type="password" name="password" class="form-control" >
         @if ($errors->has('password'))
         <span class="text-danger">{{$errors->first('password')}}</span>
@@ -54,6 +54,6 @@
         @endif
       </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Tạo</button>
   </form>
 @endsection

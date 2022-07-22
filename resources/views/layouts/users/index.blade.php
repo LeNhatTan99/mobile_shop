@@ -8,13 +8,13 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
+        <th scope="col">Tên</th>
         <th scope="col">Role</th>
         <th scope="col">Email</th>
-        <th scope="col">Phone number</th>
-        <th scope="col">Address</th>
+        <th scope="col">Số điện thoại</th>
+        <th scope="col">Địa chỉ</th>
 
-        <th scope="col">Acction</th>
+        <th scope="col">Hành động</th>
       </tr>
     </thead>
     <tbody>
@@ -28,12 +28,12 @@
         <td>{{$user->address}}</td>
 
         <td>
-            <a href="{{route('users.show',['user'=>$user->id])}}" class="btn btn-info">View</a>
-            <a href="{{route('users.edit',['user'=>$user->id])}}" class="btn btn-primary">Edit</a>
+            <a href="{{route('users.show',['user'=>$user->id])}}" class="btn btn-info">Xem</a>
+            <a href="{{route('users.edit',['user'=>$user->id])}}" class="btn btn-primary">Sửa</a>
             <form action="{{route('users.destroy',['user'=>$user->id])}}" method="POST" style="display: inline-block">
             @csrf
             @method('delete')
-                <button class="btn btn-danger" type="submit">Delete</button>
+                <button class="btn btn-danger" type="submit">Xoá</button>
             </form>
         </td>
     </tr>

@@ -1,6 +1,6 @@
 
 
-<header class="header_section">
+<header class="header_section ">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
             <a class="navbar-brand" href="index.html">
@@ -29,8 +29,8 @@
                                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right text-center">
                                         @foreach ($categories as $category )
                                         <div class="dropdown-divider"></div>
-                                        <a href="#">
-                                            <span class="profile_span">{{ $category->name }}</span>
+                                        <a href="{{route('get.list.product',[$category->slug])}}" >
+                                            <span class="profile_span">{{ $category->category_name }}</span>
                                         </a>
                                         @endforeach
                                 </div>
@@ -66,16 +66,64 @@
                         <div class="form-group mb-0">
                             <div class="input-group input-group-alternative">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" style="margin-top:4px"><i
+                                    <span class="input-group-text" style="height:38px"><i
                                             class="fa fa-search"></i></span>
                                 </div>
                                 <input class="form-control" placeholder="Tìm kiếm" type="text">
                             </div>
                         </div>
                     </form>
-                    <a class="nav-link" href="{{route('cart')}}">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger"></span>
-                    </a>
+
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <ul class="navbar-nav align-items-center d-none d-md-flex">
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link profile_link" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right text-center">
+
+                                     {{-- @foreach ($brands as $brand )
+                                     @endforeach --}}
+                                     <div class="dropdown-divider"></div>
+                                      <div id="change-item-cart">
+                                          <div class="select-items">
+                                             <table>
+                                                 <tbody>
+                                                     <tr>
+                                                         <td class="si-pic"><img src="" alt=""></td>
+                                                         <td class="si-text">
+                                                             <div class="product-selected">
+                                                                <p>Đơn giá: ₫60.00 x 1</p>
+                                                                <h6>Tên sản phẩm:</h6>
+                                                                 {{-- <p>{{number_format($product['productInfo']->price)}}₫ x {{$product['qty']}}</p>
+                                                                 <h6> {{$product['productInfo']->name}}</h6> --}}
+                                                             </div>
+                                                         </td>
+                                                         <td class="si-close">
+                                                             <i class="ti-close"></i>
+                                                         </td>
+                                                     </tr>
+
+                                                 </tbody>
+                                             </table>
+                                         </div>
+                                         <div class="select-total">
+                                             <span>Tổng:</span>
+                                             <h5>₫120.00</h5>
+                                         </div>
+                                        </div>
+                                    <div class="select-button">
+                                        <a href="#" class="primary-btn view-card">Xem giỏ hàng</a>
+                                        <a href="#" class="primary-btn checkout-btn">Thanh toán</a>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                  </ul>
 
                     @if (!empty(auth()->user()->name))
                         <ul class="navbar-nav align-items-center d-none d-md-flex">

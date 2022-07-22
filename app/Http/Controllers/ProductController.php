@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateUpdateProductRequest;
 use App\Models\Category;
 use App\Models\Brand;
+use Illuminate\Support\Facades\Storage;
+
 class ProductController extends Controller
 {
     /**
@@ -18,9 +20,14 @@ class ProductController extends Controller
      */
     public function index()
     {
+
+        if(!auth()->check() || auth()->user()->role->name != 'admin')
+        {
+            die("Bạn không thể truy cập vào trang quản trị viên");
+        };
         $categories = Category::get();
         $brands = Brand::get();
-        $products = Product::paginate(7);
+        $products = Product::paginate(5);
         return view('layouts.products.index', ['products' => $products], ['categories' => $categories], ['brands' => $brands]);
     }
 
@@ -31,6 +38,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+        if(!auth()->check() || auth()->user()->role->name != 'admin')
+        {
+            die("Không có quyền truy cập vào trang này");
+        }
         $categories = Category::get();
         $brands = Brand::get();
         return view('layouts.products.create', ['categories' => $categories,'brands' => $brands]);
@@ -52,13 +63,13 @@ class ProductController extends Controller
            'discount'=>$request->discount,
            'color'=>$request->color,
            'thumbnail'=>$request->thumbnail,
+           'status'=>$request->status,
            'description'=>$request->description,
            'inventory'=>$request->inventory,
 
         ];
         DB::beginTransaction();
         try {
-
           $product =  Product::create($data);
           $product->categories()->sync($request->categoryIds);
           $product->brands()->sync($request->brandIds);
@@ -79,10 +90,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Product $product, Request $request)
     {
 
-        return view('layouts.products.show', ['product' => $product]);
+        return view('layouts.products.detail', ['product' => $product]);
     }
 
 
@@ -94,6 +105,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        if(!auth()->check() || auth()->user()->role->name != 'admin')
+        {
+            die("Không có quyền truy cập vào trang này");
+        }
         $categories = Category::get();
         $brands = Brand::get();
         return view('layouts.products.edit', ['product' => $product,'brands'=>$brands,'categories' => $categories]);
@@ -108,6 +123,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+
         // $categories = Category::get();
         // $brands = Brand::get();
         $data=[
@@ -117,6 +133,7 @@ class ProductController extends Controller
             'discount'=>$request->discount,
             'color'=>$request->color,
             'thumbnail'=>$request->thumbnail,
+            'status'=>$request->status,
             'description'=>$request->description,
             'inventory'=>$request->inventory,
 
@@ -144,6 +161,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if(!auth()->check() || auth()->user()->role->name != 'admin')
+        {
+            die("Không có quyền xoá sản phẩm");
+        }
         try {
             $product->delete();
             return redirect()->route('products.index')->with('success', 'Delete product success');;
@@ -153,29 +174,12 @@ class ProductController extends Controller
             return back()->with('error', 'Delete product failed');
         }
     }
-   /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function detail(Product $product)
+    public function  detail(Product $product, Request $request)
     {
 
-        $product=Product::find(1);
-        return view('frontend.detail', ['product' => $product])->with('product', $product);
+        return view('layouts.products.detail', ['product' => $product]);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function cart()
 
-    {
-
-        return view('frontend.cart');
-    }
 
 }

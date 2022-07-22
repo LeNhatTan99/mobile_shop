@@ -27,6 +27,7 @@
         </style>
     </head>
     <body class="{{ $class ?? '' }}">
+
         @auth()
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
@@ -36,6 +37,16 @@
 
         <div class="main-content">
             @include('layouts.navbars.navbar')
+            @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+            @else @if (session('success'))
+            <div class="alert alert-success">
+                  <p>{{ session('success') }}</p>
+            </div>
+            @endif
+        @endif
             @yield('content')
         </div>
 

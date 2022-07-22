@@ -3,7 +3,7 @@
 <table class="table col-6">
     <h4>Thông tin người dùng</h4>
 <tr>
-    <td >Name:</td>
+    <td >Tên người dùng:</td>
     <td>{{$user->name}}</td>
 </tr>
 <tr>
@@ -15,15 +15,15 @@
     <td>{{$user->email}}</td>
 </tr>
 <tr>
-    <td >Phone number:</td>
+    <td >Số điện thoại:</td>
     <td>{{$user->phone_number}}</td>
 </tr>
 <tr>
-    <td >Address:</td>
+    <td >Địa chỉ:</td>
     <td>{{$user->address}}</td>
 </tr>
 <tr>
-    <td >password:</td>
+    <td >Mật khẩu:</td>
     <td>{{$user->password}}</td>
 </tr>
 </table>

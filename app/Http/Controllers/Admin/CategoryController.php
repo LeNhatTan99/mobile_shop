@@ -1,18 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->authorizeResource(Category::class);
-    // }
+     protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'category_name'=>['required','string'],
+     ]);
+    }
 
     /**
      * Display a listing of the resource.
@@ -21,6 +26,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+
         $categories = Category::paginate(7);
         return view('layouts.categories.index', ['categories' => $categories]);
     }
@@ -32,6 +38,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+
         return view('layouts.categories.create');
     }
 
@@ -43,9 +50,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validator($request->all())->validate();
+        $data=[
+
+            'category_name'=>$request->category_name,
+            'slug' => Str::slug($request->category_name),
+         ];
         DB::beginTransaction();
         try {
-            Category::create($request->only(['name']));
+            Category::create($data);
             DB::commit();
             return redirect()->route('categories.index')->with('success', 'Create category success');;
         } catch (\Exception $e) {
@@ -64,6 +77,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+      
         return view('layouts.categories.show', ['category' => $category]);
     }
 
@@ -75,6 +89,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+
         return view('layouts.categories.edit', ['category' => $category]);
     }
 
@@ -87,10 +102,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $this->validator($request->all())->validate();
+        $data=[
+            'category_name'=>$request->category_name,
+            'slug' => Str::slug($request->category_name),
+         ];
            DB::beginTransaction();
-
            try {
-               $category->update($request->only(['name']));
+               $category->update($data);
                DB::commit();
             return redirect()->route('categories.index')->with('success', 'Update category success');;
         } catch (\Exception $e) {
@@ -108,6 +127,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+
         try {
             $category->delete();
             return redirect()->route('categories.index')->with('success', 'Delete category success');;

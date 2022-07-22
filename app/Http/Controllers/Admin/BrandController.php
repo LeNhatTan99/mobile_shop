@@ -1,14 +1,35 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use App\Models\Brand;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateUpdateBrandRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class BrandController extends Controller
 {
+
+ /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'logo'=>['required', 'image'],
+        ]);
+    }
+    protected function storeImage(Request $request) {
+        $path = $request->file('logo')->storeAs('public/mobile_image/logo', $request->name.'.'.'jpg');
+        return substr($path, strlen('public/'));
+      }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -38,11 +59,16 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validator($request->all())->validate();
+        $imageUrl = $this->storeImage($request);
         DB::beginTransaction();
         try {
 
-            $file = $request->file('logo')->storeAs('mobile_image/logo', $request->name.'.'.'jpg');
-            Brand::create($request->only(['name','logo']));
+            $data = [
+                'name'=>$request->name,
+                'logo'=> $imageUrl,
+            ];
+            Brand::create($data);
 
       DB::commit();
             return redirect()->route('brands.index')->with('success', 'Create brand success');;
@@ -72,6 +98,7 @@ class BrandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Brand $brand)
+
     {
         return view('layouts.brands.edit', ['brand' => $brand]);
     }
@@ -85,12 +112,16 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-
+        $this->validator($request->all())->validate();
+        $imageUrl = $this->storeImage($request);
         DB::beginTransaction();
         try {
 
-             $file = $request->file('logo')->storeAs('mobile_image/logo', $request->name.'.'.'jpg');
-            $brand->update($request->only(['name','logo']));
+            $data = [
+                'name'=>$request->name,
+                'logo'=> $imageUrl,
+            ];
+            $brand->update($data);
             DB::commit();
          return redirect()->route('brands.index')->with('success', 'Update brand success');;
      } catch (\Exception $e) {

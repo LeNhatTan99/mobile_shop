@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Product;
+use App\Cart;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
             $view ->with('categories',$categories);
             $view ->with('brands',$brands);
             $view ->with('products',$products);
+
         });
 
     }

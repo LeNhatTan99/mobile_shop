@@ -35,6 +35,16 @@
 </head>
 
 <body>
+    @if (session('error'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('error') }}
+    </div>
+    @else @if (session('success'))
+    <div class="alert alert-success">
+          <p>{{ session('success') }}</p>
+    </div>
+    @endif
+@endif
     @auth()
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
@@ -43,22 +53,59 @@
 @include('frontend.header')
 @yield('content')
 
+
+
   <!-- jQery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/jquery-3.4.1.min.js"></script>
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
   </script>
   <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
   <!-- owl slider -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
   <!-- custom js -->
-  <script src="js/custom.js"></script>
+  <script src="assets/js/custom.js"></script>
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+<script>
+    function addCart(id){
+        $.ajax(
+            {
+                url: 'addCart/'+id,
+                type: 'GET',
+            }).done(function(reponse){
+               $("#change-item-cart").empty();
+               $("#change-item-cart").html(reponse)
+            //    alertify.success('Thêm vào giỏ hàng thành công');
+            });
+              };
+        // $("#change-item-cart").on("click",".close-td button", function(){
+        //     $.ajax(
+        //     {
+        //         url: 'deleteItemCart/'+$($this).data("id"),
+        //         type: 'GET',
+        //     }).done(function(reponse){
+
+        //        $("#change-item-cart").empty();
+        //        $("#change-item-cart").html(reponse)
+        //        alertify.success('Đã xoá sản phẩm thành công');
+        //     });
+        // });
+</script>
 </body>
 
 </html>

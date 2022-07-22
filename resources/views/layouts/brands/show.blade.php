@@ -3,7 +3,7 @@
 <table class="table col-6">
     <h4>Thông tin thương hiệu</h4>
 <tr>
-    <td >Name:</td>
+    <td >Tên thương hiệu:</td>
     <td>{{$brand->name}}</td>
 </tr>
 <tr>

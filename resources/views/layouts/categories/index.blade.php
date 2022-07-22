@@ -8,22 +8,22 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
-      <th scope="col">Acction</th>
+        <th scope="col">Tên danh mục</th>
+      <th scope="col">Hành động</th>
       </tr>
     </thead>
     <tbody>
       @foreach ($categories as $category)
       <tr>
         <td>{{$category->id}}</td>
-        <td>{{$category->name}}</td>
+        <td>{{$category->category_name}}</td>
         <td>
-            <a href="{{route('categories.show',['category'=>$category->id])}}" class="btn btn-info">View</a>
-            <a href="{{route('categories.edit',['category'=>$category->id])}}" class="btn btn-primary">Edit</a>
+            <a href="{{route('categories.show',['category'=>$category->id])}}" class="btn btn-info">Xem</a>
+            <a href="{{route('categories.edit',['category'=>$category->id])}}" class="btn btn-primary">Sửa</a>
             <form action="{{route('categories.destroy',['category'=>$category->id])}}" method="POST" style="display: inline-block">
             @csrf
             @method('delete')
-                <button class="btn btn-danger" type="submit">Delete</button>
+                <button class="btn btn-danger" type="submit">Xoá</button>
             </form>
         </td>
     </tr>

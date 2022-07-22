@@ -27,22 +27,22 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
-                'required', 'min:3'
-            ],
-            'email' => [
-                'required', 'email', Rule::unique((new User)->getTable())->ignore($this->route()->user->id ?? null)
-            ],
+          $validator =   'name' => [
+            'required', 'min:3'
+        ],
+        'email' => [
+            'required', 'email', Rule::unique((new User)->getTable())->ignore($this->route()->user->id ?? null)
+        ],
 
-            'phone_number'=>[
-                'required','min:10','max:12','regex:/(0)[0-9]{9}/'
-            ],
-            'address'=>[
-                'required','string'
-            ],
-            'password' => [
-                 'required', 'min:6'
-            ],
+        'phone_number'=>[
+            'required','min:10','max:12','regex:/(0)[0-9]{9}/'
+        ],
+        'address'=>[
+            'required','string'
+        ],
+        'password' => [
+             'required', 'min:6'
+        ],
             // 'password' => [
             //     $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6'
             // ]

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="wrapper">
         <div class="product-img">
-          <img src="https://cdn.tgdd.vn/Products/Images/42/223602/iphone-13-1-4.jpg" height="auto" width="327" >
+          <img src="{{ asset('storage/' . $product->thumbnail) }}" height="auto" width="327" >
         </div>
         <div class="product-info">
           <div class="product-text">

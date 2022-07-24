@@ -8,38 +8,37 @@
 </div>
 
 
-<!-- Breadcrumb Section Begin -->
 <div class="breacrumb-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text product-more">
-                    <span> <h4>Giỏ hàng</h4></span>
+                    <span> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng </span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Breadcrumb Section Begin -->
 
-<!-- Shopping Cart Section Begin -->
+    <!-- Shopping Cart Section Begin -->
 <section class="shopping-cart spad">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                @if (Session::has("cart") != null)
-                <div class="cart-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Hình ảnh</th>
-                                <th class="p-name">Tên sản phẩm</th>
-                                <th>Số lượng</th>
-                                <th>Giá</th>
-                                <th>Xoá</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            <div class="row">
+              <div class="col-lg-12">
+                    @if (Session::has("cart") != null)
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Hình ảnh</th>
+                                    <th class="p-name">Tên sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th>Cập nhật</th>
+                                    <th>Xoá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
                             @foreach (Session::get('cart')->products as $product )
 
@@ -52,11 +51,12 @@
                                 <td class="qua-col">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <input type="text" value="{{$product['qty']}}">
+                                            <input type="number" min="1" value="{{$product['qty']}}" id="product_{{ $product['productInfo']->id }}">
                                         </div>
                                     </div>
                                 </td>
                                 <td class="total-price">{{number_format($product['price'])}} &#8363;</td>
+                                <td class="close-td"><a href="{{route('update.cart',[$product['productInfo']->id,$product['qty']])}}" class="btn btn-info update-item">Lưu</i></a></td>
                                 <td class="close-td"><a href="{{route('delete.cart',$product['productInfo']->id)}}" class="btn btn-danger">X</a></td>
                             </tr>
                         </div>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                @else <h2>Giỏ hàng chưa có sản phẩm nào</h2>
+                @else <h4>Giỏ hàng chưa có sản phẩm nào!</h4>
                 @endif
             </div>
         </div>
@@ -82,6 +82,6 @@
 </section>
 
 
-<!-- Js Plugins -->
-
 @endsection
+
+

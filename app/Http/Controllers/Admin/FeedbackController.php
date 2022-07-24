@@ -32,7 +32,7 @@ class FeedbackController extends Controller
         return view('frontend.feedback');
     }
 
-  
+
     /**
      * Display the specified resource.
      *
@@ -55,7 +55,7 @@ class FeedbackController extends Controller
 
         try {
             $feedback->delete();
-            return redirect()->route('products.index')->with('success', 'Delete feedback success');;
+            return redirect()->route('feedbacks.index')->with('success', 'Delete feedback success');;
         } catch (\Exception $e) {
             //throw $th;
             Log::error($e->getMessage());

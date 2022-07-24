@@ -19,22 +19,39 @@ class Cart
     }
 
     public function addCart(  $product,$id){
-        $newProduct = ['qty'=> 0,'price'=>$product->price ,'productInfo'=> $product];
+        if($product->discount > 0 ){
+            $price = $product->discount;
+        } else {
+            $price = $product->price;
+        }
+        $newProduct = ['qty'=> 0,'price'=>$price ,'productInfo'=> $product];
         if($this->products){
             if(array_key_exists($id, $this->products)){
                 $newProduct = $this->products[$id] ;
             };
         }
         $newProduct['qty']++;
-        $newProduct['price'] =$newProduct['qty']*$product->price;
+        $newProduct['price'] =$newProduct['qty']*$price;
         $this->products[$id] = $newProduct;
-        $this->totalPrice += $product->price;
+        $this->totalPrice += $price;
         $this->totalQty++;
     }
     public function deleteItemCart($id){
+            $this->totalQty -= $this->products[$id]['qty'];
+            $this->totalPrice -= $this->products[$id]['price'];
+            unset($this->products[$id]);
+    }
+
+    public function updateItemCart($id,$qty){
         $this->totalQty -= $this->products[$id]['qty'];
         $this->totalPrice -= $this->products[$id]['price'];
-        unset($this->products[$id]);
-    }
+
+        $this->products[$id]['qty'] = $qty;
+        $this->products[$id]['price'] = $qty*$this->products[$id]['price'];
+
+        $this->totalQty += $this->products[$id]['qty'];
+        $this->totalPrice += $this->products[$id]['price'];
+}
+
 
 }

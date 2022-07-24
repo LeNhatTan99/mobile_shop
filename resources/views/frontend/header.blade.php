@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('home')}}">Trang chủ <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{route('home')}}"><i class="fa fa-home"></i> Trang chủ <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <ul class="navbar-nav align-items-center d-none d-md-flex">
@@ -78,49 +78,15 @@
                       <li class="nav-item">
                         <ul class="navbar-nav align-items-center d-none d-md-flex">
                             <li class="nav-item dropdown ">
-                                <a class="nav-link profile_link" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <a class="nav-link profile_link" href="{{route('show.list.cart')}}" role="button"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> <b id="count">{{Session::get('cart')->totalQty}}</b>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right text-center">
-                                     <div class="dropdown-divider"></div>
-                                      <div id="change-item-cart">
-                                          <div class="select-items">
-                                             <table>
-                                                 <tbody>
-                                                     <tr>
-                                                         <td class="si-pic"><img src="" alt=""></td>
-                                                         <td class="si-text">
-                                                             <div class="product-selected">
-                                                                <p>Đơn giá: ₫60.00 x 1</p>
-                                                                <h6>Tên sản phẩm:</h6>
-                                                                 {{-- <p>{{number_format($product['productInfo']->price)}}₫ x {{$product['qty']}}</p>
-                                                                 <h6> {{$product['productInfo']->name}}</h6> --}}
-                                                             </div>
-                                                         </td>
-                                                         <td class="si-close">
-                                                             <i class="ti-close"></i>
-                                                         </td>
-                                                     </tr>
-
-                                                 </tbody>
-                                             </table>
-                                         </div>
-                                         <div class="select-total">
-                                             <span>Tổng:</span>
-                                             <h5>₫120.00</h5>
-                                         </div>
-                                        </div>
-                                    <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">Xem giỏ hàng</a>
-                                        <a href="#" class="primary-btn checkout-btn">Thanh toán</a>
-                                    </div>
-
-                                </div>
                             </li>
                         </ul>
                     </li>
                   </ul>
+
 
                     @if (!empty(auth()->user()->name))
                         <ul class="navbar-nav align-items-center d-none d-md-flex">

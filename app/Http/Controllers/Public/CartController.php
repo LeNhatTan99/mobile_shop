@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Public;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -9,14 +10,9 @@ use App\Cart;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 
+
 class CartController extends Controller
 {
-   public function Index()
-    {
-        $products = DB::table('products')->get();
-        return view('frontend.app', ['products' => $products]);
-    }
-
 
     public function addCart(Request $request,$id){
         $product = DB::table('products')->where('id',$id)->first();
@@ -25,11 +21,11 @@ class CartController extends Controller
             $newCart = new Cart($cart);
             $newCart->addCart($product,$id);
             $request->session()->put('cart',$newCart);
-
         }
-        return view('frontend.cart',['newCart'=>$newCart]);
-
-
+        $viewData = [
+            'newCart'=> $newCart,
+        ];
+       return back()->with('success', 'Đã thêm '. $product->name .' vào giỏ hàng thành công');
     }
 
 
@@ -43,13 +39,24 @@ class CartController extends Controller
            }else {
             $request->session()->forget('cart');
            }
-
-
-        return view('frontend.cart',['newCart'=>$newCart]);
-
-
+           $viewData = [
+            'newCart'=> $newCart,
+        ];
+        return back()->with('success', 'Đã xoá sản phẩm thành công');
     }
 
+public function   updateItemCart(Request $request,$id,$qty){
 
+    $cart = Session('cart') ? Session('cart') : null;
+    $newCart = new Cart($cart);
+    $newCart->updateItemCart($id,$qty);
+    $request->session()->put('cart',$newCart);
+
+    return view('frontend.showcart')->with('success', 'Đã cập nhật số lượng thành công');;
+}
+
+public function showCart(){
+    return view('frontend.showcart');
+}
 
 }

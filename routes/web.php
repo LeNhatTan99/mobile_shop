@@ -25,12 +25,11 @@ Route::get('/', 'App\Http\Controllers\Public\HomeController@index')->name('home'
 Route::get('category/{slug}', 'App\Http\Controllers\Public\CategoryController@getListProduct')->name('get.list.product');
 Route::get('product/{slug}', 'App\Http\Controllers\Public\ProductController@productDetail')->name('product.detail');
 Route::get('brand/{slug}', 'App\Http\Controllers\Public\BrandController@getListProduct')->name('brand.product');
-
-
-
-
-Route::get('/addCart/{id}', 'App\Http\Controllers\CartController@addCart');
-Route::get('/deleteItemCart/{id}', 'App\Http\Controllers\CartController@deleteItemCart');
+            //Cart
+Route::get('addCart/{id}', 'App\Http\Controllers\Public\CartController@addCart')->name('add.cart');
+Route::get('deleteItemCart/{id}', 'App\Http\Controllers\Public\CartController@deleteItemCart')->name('delete.cart');
+Route::get('updateItemCart/{id}/{qty}', 'App\Http\Controllers\Public\CartController@updateItemCart')->name('update.cart');
+Route::get('showCart', 'App\Http\Controllers\Public\CartController@showCart')->name('show.list.cart');
 
 //Member
 Route::group(['middleware' => 'auth'], function() {
@@ -38,7 +37,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-    Route::put('feedback','App\Http\Controllers\FeedbackController@store')->name('feedback');
+    Route::put('feedback','App\Http\Controllers\Auth\FeedbackController@store')->name('feedback');
 });
 
 //Admin

@@ -4,17 +4,16 @@
 
     <section class="shop_section layout_padding">
         <div class="container">
-         <div class="row">
 
-                {{-- phone --}}
+            <div class="heading_container heading_center">
+                <h2>
+                    Oppo
+                </h2>
+            </div>
+            @if ($productOppo->count())
 
-
-                <div class="heading_container heading_center">
-                    <h2>
-                        Điện thoại
-                    </h2>
-                </div>
-                @foreach ( $productMobile as $product )
+            <div class="row">
+                @foreach ( $productOppo as $product )
                 <div class="col-sm-6 col-xl-3">
                     <div class="box">
                         <a href="{{route('product.detail',[$product->slug])}}">
@@ -77,7 +76,11 @@
                     </div>
                 </div>
                 @endforeach
-        </div>
+            </div>
+            @else
+            <h1>Hiện tại chưa có sản phẩm nào!</h1>
+            @endif
+    </div>
     </section>
 
     <!-- end shop section -->

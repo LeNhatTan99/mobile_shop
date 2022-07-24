@@ -16,6 +16,7 @@ class Product extends Model
         'thumbnail',
         'status',
         'description',
+        'parameter',
         'inventory',
         'color',
         'slug',

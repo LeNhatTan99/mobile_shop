@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 
 class BrandController extends Controller
@@ -67,6 +68,7 @@ class BrandController extends Controller
             $data = [
                 'name'=>$request->name,
                 'logo'=> $imageUrl,
+                'slug' => Str::slug($request->name),
             ];
             Brand::create($data);
 
@@ -120,6 +122,7 @@ class BrandController extends Controller
             $data = [
                 'name'=>$request->name,
                 'logo'=> $imageUrl,
+                'slug' => Str::slug($request->name),
             ];
             $brand->update($data);
             DB::commit();

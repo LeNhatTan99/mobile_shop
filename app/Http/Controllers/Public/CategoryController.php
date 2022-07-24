@@ -18,13 +18,13 @@ class CategoryController extends Controller
     $productNew = Product::where('status','=', 1)->orderBy('products.price', 'desc')->get();
     $productMobile = Product::join('category_product', 'products.id', '=', 'category_product.product_id' )
     ->join('categories', 'category_product.category_id', '=', 'categories.id')
-    ->where('categories.id', 1)->orderBy('products.discount', 'desc')->get($col);
+    ->where('categories.id', 1)->orderBy('products.discount', 'desc')->orderBy('products.price','desc')->get($col);
     $productTablet =  Product::join('category_product', 'products.id', '=', 'category_product.product_id' )
     ->join('categories', 'category_product.category_id', '=', 'categories.id')
-    ->where('categories.id', 2)->orderBy('products.discount', 'desc')->get($col);
+    ->where('categories.id', 2)->orderBy('products.discount', 'desc')->orderBy('products.price','desc')->get($col);
     $productAccessory =  Product::join('category_product', 'products.id', '=', 'category_product.product_id' )
     ->join('categories', 'category_product.category_id', '=', 'categories.id')
-    ->where('categories.id', 3)->orderBy('products.discount', 'desc')->get($col);
+    ->where('categories.id', 3)->orderBy('products.discount', 'desc')->orderBy('products.price','desc')->get($col);
 
     $category_slug = Category::where('slug',$slug)->first();
 

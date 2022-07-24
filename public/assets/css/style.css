@@ -90,11 +90,19 @@ a:focus {
 }
 /* header dropdown */
 .dropdown-menu{
- background-color: #ddd;
- min-width: 15rem;
- padding: 20px;
+ background-color: #fff;
+ min-width: 10rem;
+ padding: 10px;
  margin: 0;
 }
+.dropdown-menu a {
+    font-weight: bold;
+    color: black;
+}
+.dropdown-menu a:hover{
+    color: purple
+}
+
 /*header section*/
 .hero_area {
   position: relative;
@@ -464,6 +472,29 @@ object-fit: cover;
   font-weight: bold;
 }
 .new p {
+    margin: 0;
+
+}
+.old {
+    padding: 7px 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: #ffffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .old p {
     margin: 0;
 
 }
@@ -945,14 +976,16 @@ object-fit: cover;
 }
 
 /* css detail */
-.wrapper {
-    min-height: 500px;
-    width: 720px;
-    margin: 50px auto;
+.product-detail {
+    width: 80%;
+  }
+  .thumbnail-detail {
+    min-height: 1500px;
+    margin: 30px auto;
+    width: 80%;
     border-radius: 7px 7px 7px 7px;
-    -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+
   }
 
 .product span {
@@ -961,10 +994,10 @@ object-fit: cover;
     margin-bottom: 12px;
 }
   .product-img {
-    float: left;
     height: 420px;
-    width: 327px;
-    margin: 10% 0;
+    width: auto;
+    object-fit: cover;
+    margin: 10% ;
   }
 
   .product-img img {
@@ -983,12 +1016,13 @@ object-fit: cover;
   }
 
   .product-text {
-    height: 300px;
-    width: 327px;
+    padding: 0 0 24px 24px;
+    width: auto;
   }
 
   .product-text h1 {
-    margin: 0 0 0 38px;
+    font-weight: bold;
+    margin: 0 0 0 46px;
     padding: 38px 0;
     font-size: 20px;
     color: #474747;
@@ -1019,10 +1053,8 @@ object-fit: cover;
 
     margin: 0 0 0 38px;
     font-family: 'Playfair Display', serif;
-    color: #8d8d8d;
     line-height: 1.7em;
-    font-size: 15px;
-    font-weight: lighter;
+    font-size: 16px;
     overflow: hidden;
   }
 
@@ -1347,18 +1379,6 @@ object-fit: cover;
 	text-align: center;
 }
 
-/* td */
-.description{
-    min-width: 10rem;
-    display: -webkit-box;
-    max-height: 10rem;
-   -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    -webkit-line-clamp: 2;
-    line-height: 1.6rem;
-}
 
 /* profile */
 .gradient-custom {

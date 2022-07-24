@@ -111,21 +111,20 @@
     <!-- shop section -->
 
     <section class="shop_section layout_padding">
+        @if ($products->count())
+
         <div class="container">
-            <div class="heading_container heading_center">
-                <h2>
-                    Sản phẩm mới
-                </h2>
-            </div>
-
             <div class="row">
-           @if (isset($productNew))
+           @if ($productNew->count())
+           <div class="heading_container heading_center">
+            <h2>
+                Sản phẩm mới
+            </h2>
+        </div>
            @foreach ($productNew as $product )
-
            <div class="col-sm-6 col-xl-3">
                <div class="box">
                    <a href="{{route('product.detail',[$product->slug])}}">
-                    {{-- <a href=""> --}}
                        <div class="img-box">
                            <img src="{{ asset('storage/' . $product->thumbnail) }}" alt="">
                        </div>
@@ -152,7 +151,6 @@
 
            @endforeach
            @endif
-
 
                 {{-- phone --}}
                     <div class="heading_container " id="danhmucid1">
@@ -202,14 +200,28 @@
                                     </div>
                                     @endif
                                 </div>
+                                <div class="tag">
+                                    @if ($product->inventory == 0)
+                                    <div class="old">
+                                        <p>
+                                            Hết hàng
+                                        </p>
+                                    </div>
+                                    @endif
+                                    @if ($product->status == 1)
+                                    <div class="new">
+                                        <p>
+                                            Mới
+                                        </p>
+                                    </div>
+                                    @endif
+                                 </div>
                                </div>
 
                             </a>
                         </div>
                     </div>
                     @endforeach
-
-
                 {{-- Máy tính bảng --}}
 
                     <div class="heading_container " id="danhmucid2">
@@ -245,6 +257,11 @@
                                                 </span>
                                             </div>
                                         </div>
+                                        <div class="new">
+                                            <p>
+                                                Giảm giá
+                                            </p>
+                                        </div>
                                         @else
                                         <div class="text-center">
                                             <span>
@@ -253,10 +270,27 @@
                                         </div>
                                         @endif
                                     </div>
+                                    <div class="tag">
+                                        @if ($product->inventory == 0)
+                                        <div class="old">
+                                            <p>
+                                                Hết hàng
+                                            </p>
+                                        </div>
+                                        @endif
+                                        @if ($product->status == 1)
+                                        <div class="new">
+                                            <p>
+                                                Mới
+                                            </p>
+                                        </div>
+                                        @endif
+                                     </div>
+                                   </div>
                                    </div>
                             </a>
                         </div>
-                    </div>
+
                     @endforeach
 
                 {{-- Phụ kiện --}}
@@ -293,6 +327,11 @@
                                                 </span>
                                             </div>
                                         </div>
+                                        <div class="new">
+                                            <p>
+                                                Giảm giá
+                                            </p>
+                                        </div>
                                         @else
                                         <div class="text-center">
                                             <span>
@@ -301,18 +340,32 @@
                                         </div>
                                         @endif
                                     </div>
+                                    <div class="tag">
+                                        @if ($product->inventory == 0)
+                                        <div class="old">
+                                            <p>
+                                                Hết hàng
+                                            </p>
+                                        </div>
+                                        @endif
+                                        @if ($product->status == 1)
+                                        <div class="new">
+                                            <p>
+                                                Mới
+                                            </p>
+                                        </div>
+                                        @endif
+                                     </div>
+                                   </div>
                                    </div>
                             </a>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
-
-            <div class="btn-box">
-                <a href="">
-                    Xem tất cả
-                </a>
-            </div>
         </div>
+        @else
+        <h1 class="text-warning"><span >Hiện chưa có sản phẩm nào!</span></h1>
+        @endif
     </section>
 
     <!-- end shop section -->

@@ -54,6 +54,13 @@
         <span class="text-danger">{{$errors->first('description')}}</span>
         @endif
       </div>
+      <div class="mb-3">
+        <label  class="form-label">Thông số</label>
+        <textarea name="parameter"  cols="30" rows="10" class="form-control">{{old('parameter')}}</textarea>
+        @if ($errors->has('parameter'))
+        <span class="text-danger">{{$errors->first('parameter')}}</span>
+        @endif
+      </div>
 
       <div class="mb-3">
         <label  class="form-label">Trạng thái</label>
@@ -94,7 +101,7 @@
           <div class="form-group">
             @foreach ($brands as $brand)
               <div class="form-check">
-                <input id="flexCheckCheckedBrand{{$brand->id}}" class="form-check-input" type="radio" value="{{ $brand->id }}" name="brandIds[]">
+                <input id="flexCheckCheckedBrand{{$brand->id}}" class="form-check-input" type="radio" value="{{ $brand->id }}" {{ old('brandIds[]') == $brand->id ? 'checked' : '' }}  name="brandIds[]">
                 <label class="form-check-label" for="flexCheckCheckedBrand{{$brand->id}}">
                   {{ $brand->name }}
                 </label>

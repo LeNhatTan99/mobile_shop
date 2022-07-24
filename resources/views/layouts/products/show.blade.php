@@ -29,11 +29,11 @@
 
             <tr>
                 <th scope="col">Giá</th>
-                <td>{{ $product->price }}</td>
+                <td>{{ number_format($product->price) }}</td>
             </tr>
             <tr>
                 <th scope="col">Giá khuyến mãi</th>
-                <td>{{ $product->discount }}</td>
+                <td>{{  number_format($product->discount) }}</td>
             </tr>
 
             <tr>
@@ -48,7 +48,12 @@
 
             <tr>
                 <th scope="col">Mô tả</th>
-                <td>{{ $product->description }}</td>
+                <td><textarea cols="80" rows="5">{{ $product->description }}</textarea></td>
+            </tr>
+
+            <tr>
+                <th scope="col">Thông số</th>
+                <td><textarea  cols="80" rows="10">{{ $product->parameter }}</textarea></td>
             </tr>
 
             <tr>

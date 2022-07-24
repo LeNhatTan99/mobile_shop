@@ -55,6 +55,13 @@
         <span class="text-danger">{{$errors->first('description')}}</span>
         @endif
       </div>
+      <div class="mb-3">
+        <label  class="form-label">Thông số</label>
+        <textarea name="parameter"  cols="30" rows="10" class="form-control">{{old('parameter',$product->parameter)}}</textarea>
+        @if ($errors->has('parameter'))
+        <span class="text-danger">{{$errors->first('parameter')}}</span>
+        @endif
+      </div>
 
       <div class="mb-3">
         <label  class="form-label">Trạng thái</label>

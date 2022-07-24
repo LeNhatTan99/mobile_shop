@@ -12,6 +12,7 @@ class Brand extends Model
     protected $fillable = [
         'name',
         'logo',
+        'slug',
     ];
  /**
   * The products that belong to the Brand

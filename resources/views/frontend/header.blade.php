@@ -49,7 +49,7 @@
 
                                      @foreach ($brands as $brand )
                                      <div class="dropdown-divider"></div>
-                                     <a href="#">
+                                     <a href="{{route('brand.product',[$brand->slug])}}">
                                          <span class="profile_span">{{ $brand->name }}</span>
                                      </a>
                                      @endforeach
@@ -83,9 +83,6 @@
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right text-center">
-
-                                     {{-- @foreach ($brands as $brand )
-                                     @endforeach --}}
                                      <div class="dropdown-divider"></div>
                                       <div id="change-item-cart">
                                           <div class="select-items">

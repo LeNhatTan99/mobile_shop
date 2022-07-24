@@ -104,6 +104,18 @@ body
     color: #525f7f;
     background-color: #f8f9fe;
 }
+/* Custom */
+.link-image{
+    display: -webkit-box;
+    max-height: 5rem;
+   -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    line-height: 1.6rem;
+}
+
 
 [tabindex='-1']:focus
 {

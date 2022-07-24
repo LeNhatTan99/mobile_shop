@@ -40,7 +40,7 @@
         <td>{{$product->price}}</td>
         <td>{{$product->discount}}</td>
         <td>{{$product->color}}</td>
-        <td>{{$product->thumbnail}}</td>
+        <td ><span class="link-image">{{$product->thumbnail}}</span></td>
         <td >
             @if ($product->status != 1)
                 <span>Bình thường</span>

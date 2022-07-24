@@ -4,12 +4,12 @@
 
     <section class="shop_section layout_padding">
         <div class="container">
-            <div class="row">
-                <div class="heading_container heading_center">
+            <div class="heading_container heading_center">
                     <h2>
                         Phụ kiện
                     </h2>
                 </div>
+                <div class="row">
                 @foreach ( $productAccessory as $product )
                 <div class="col-sm-6 col-xl-3">
                     <div class="box">
@@ -37,6 +37,11 @@
                                             </span>
                                         </div>
                                     </div>
+                                    <div class="new">
+                                        <p>
+                                            Giảm giá
+                                        </p>
+                                    </div>
                                     @else
                                     <div class="text-center">
                                         <span>
@@ -45,11 +50,28 @@
                                     </div>
                                     @endif
                                 </div>
+                                <div class="tag">
+                                    @if ($product->inventory == 0)
+                                    <div class="old">
+                                        <p>
+                                            Hết hàng
+                                        </p>
+                                    </div>
+                                    @endif
+                                    @if ($product->status == 1)
+                                    <div class="new">
+                                        <p>
+                                            Mới
+                                        </p>
+                                    </div>
+                                    @endif
+                                 </div>
+                               </div>
                                </div>
                         </a>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
 
         </div>
     </section>

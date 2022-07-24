@@ -88,6 +88,12 @@ a:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
+/* alert */
+.alert {
+    text-align: center;
+    font-weight: bold;
+}
+
 /* header dropdown */
 .dropdown-menu{
  background-color: #fff;
@@ -1084,7 +1090,7 @@ object-fit: cover;
 
   }
 /* add Cart */
-  .product-price-btn .add_to_cart {
+  .product-price-btn .add-to-cart {
 
     display: inline-block;
     padding: 18px;
@@ -1101,7 +1107,7 @@ object-fit: cover;
     outline: none;
   }
 
-  .product-price-btn .add_to_cart:hover {
+  .product-price-btn .add-to-cart:hover {
     background-color:red;
   }
 
@@ -1188,21 +1194,32 @@ object-fit: cover;
 
 
 .shopping-cart {
-	padding-top: 80px;
+	padding-top: 30px;
 	padding-bottom: 60px;
 }
+.breadcrumb-text {
+	border-bottom: 1px solid #ebebeb;
+	padding: 15px 0;
+}
 
+
+.breadcrumb-text span {
+	display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 80px;
+}
 .cart-table {
 	margin-bottom: 40px;
 }
 
 .cart-table table {
 	width: 100%;
-	min-width: 480px;
+	min-width: 430px;
 	border: 1px solid #ebebeb;
 }
 
-.cart-table table tr th {
+ tr th {
 	font-size: 16px;
 	color: #252525;
 	font-weight: 700;
@@ -1212,38 +1229,40 @@ object-fit: cover;
 	text-transform: uppercase;
 }
 
-.cart-table table tr th.p-name {
+ th.p-name {
 	text-align: left;
 }
 
-.cart-table table tr td {
+ tr td {
 	text-align: center;
-	padding-bottom: 34px;
+	padding: 24px 0;
 }
 
 .cart-table table tr td.first-row {
 	padding-top: 30px;
 }
 
-.cart-table table tr td.cart-pic {
+.cart-pic img{
+    object-fit: cover;
+    max-height: 200px;
 	width: 21%;
 }
 
-.cart-table table tr td.cart-title {
+.cart-title {
 	text-align: left;
 }
 
-.cart-table table tr td.cart-title h5 {
+.cart-title h5 {
 	color: #252525;
 }
 
-.cart-table table tr td.p-price {
+.p-price {
 	width: 16%;
 }
 
 .cart-table table tr td.p-price,
 .cart-table table tr td.total-price {
-	color: #e7ab3c;
+	color: #e92a2a;
 	font-size: 16px;
 	font-weight: 700;
 }
@@ -1262,10 +1281,10 @@ object-fit: cover;
 }
 
 .cart-table table tr td.qua-col .pro-qty {
-	width: 123px;
+
 	height: 46px;
 	border: 2px solid #ebebeb;
-	padding: 0 15px;
+	padding: 0 24px;
 	float: left;
 }
 
@@ -1361,7 +1380,7 @@ object-fit: cover;
 }
 
 .proceed-checkout ul li.cart-total span {
-	color: #e7ab3c;
+	color: #e92a2a;
 }
 
 .proceed-checkout ul li span {

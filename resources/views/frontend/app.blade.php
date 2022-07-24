@@ -35,22 +35,23 @@
 </head>
 
 <body>
-    @if (session('error'))
-    <div class="alert alert-danger" role="alert">
-        {{ session('error') }}
-    </div>
-    @else @if (session('success'))
-    <div class="alert alert-success">
-          <p>{{ session('success') }}</p>
-    </div>
-    @endif
-@endif
+
     @auth()
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
     @endauth
 @include('frontend.header')
+@if (session('error'))
+<div class="alert alert-danger" role="alert">
+    {{ session('error') }}
+</div>
+@else @if (session('success'))
+<div class="alert alert-success">
+      <p>{{ session('success') }}</p>
+</div>
+@endif
+@endif
 @yield('content')
 
 
@@ -92,32 +93,9 @@ function clickShowHiden() {
   }
 }
 
-
-
-    function addCart(id){
-        $.ajax(
-            {
-                url: 'addCart/'+id,
-                type: 'GET',
-            }).done(function(reponse){
-               $("#change-item-cart").empty();
-               $("#change-item-cart").html(reponse)
-            //    alertify.success('Thêm vào giỏ hàng thành công');
-            });
-              };
-        // $("#change-item-cart").on("click",".close-td button", function(){
-        //     $.ajax(
-        //     {
-        //         url: 'deleteItemCart/'+$($this).data("id"),
-        //         type: 'GET',
-        //     }).done(function(reponse){
-
-        //        $("#change-item-cart").empty();
-        //        $("#change-item-cart").html(reponse)
-        //        alertify.success('Đã xoá sản phẩm thành công');
-        //     });
-        // });
 </script>
+
+
 </body>
 
 </html>

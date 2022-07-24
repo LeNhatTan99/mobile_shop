@@ -6,8 +6,9 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <h1 class="text-success"> Mobile Shop</h1>
         </a>
+        <h1 class="text-danger">Admin</h1>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
             <li class="nav-item dropdown">
@@ -78,11 +79,6 @@
             </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
-                {{-- <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.index') }}">
-                        <i class="ni ni-tv-2 text-primary"></i> {{ __('Home') }}
-                    </a>
-                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('users.index') }}">
@@ -103,11 +99,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('products.index')}}">
                         <i class="ni ni-folder-17 text-blue"></i> {{ __('Sản phẩm') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('images.index')}}">
-                        <i class="ni ni-album-2 text-blue"></i> {{ __('Hình ảnh sản phẩm') }}
                     </a>
                 </li>
 

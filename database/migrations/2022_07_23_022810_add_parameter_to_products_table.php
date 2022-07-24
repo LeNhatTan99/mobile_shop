@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Product;
 
-class CreateProductImagesTable extends Migration
+class AddParameterToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,8 @@ class CreateProductImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_images', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(Product::class);
-            $table->string('images');
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            $table->longText('parameter')->after('description');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateProductImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_images');
+        Schema::table('products', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -82,6 +82,18 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 
 <script>
+
+function clickShowHiden() {
+  var x = document.getElementById("click");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+
+
     function addCart(id){
         $.ajax(
             {

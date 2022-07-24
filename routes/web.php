@@ -12,19 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/home', [App\Http\Controllers\HomeController::class])->name('home');
+// Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class])->name('home');
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
-
-// Route::group(['prefix' => 'admin','middleware' => ['auth','role:admin']], function () {
-    Route::group(['middleware' => ['auth']], function () {});
-
-
-//  Product detail
-
 
 
 
@@ -32,8 +24,11 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/', 'App\Http\Controllers\Public\HomeController@index')->name('home');
 Route::get('category/{slug}', 'App\Http\Controllers\Public\CategoryController@getListProduct')->name('get.list.product');
 Route::get('product/{slug}', 'App\Http\Controllers\Public\ProductController@productDetail')->name('product.detail');
-//  Route::get('products/{slug}', 'App\Http\Controllers\Public\ProductController@show')->name('public.product.show');
- Route::get('products/{id}', 'App\Http\Controllers\Public\ProductController@show')->name('public.product.show');
+Route::get('brand/{slug}', 'App\Http\Controllers\Public\BrandController@getListProduct')->name('brand.product');
+
+
+
+
 Route::get('/addCart/{id}', 'App\Http\Controllers\CartController@addCart');
 Route::get('/deleteItemCart/{id}', 'App\Http\Controllers\CartController@deleteItemCart');
 
@@ -55,7 +50,6 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:admin']], fun
     Route::resource('categories','App\Http\Controllers\Admin\CategoryController');
     Route::resource('brands','App\Http\Controllers\Admin\BrandController');
     Route::resource('products','App\Http\Controllers\Admin\ProductController');
-    Route::resource('images','App\Http\Controllers\Admin\ProductImageController');
     Route::resource('orders','App\Http\Controllers\Admin\OrderController');
     Route::resource('feedbacks','App\Http\Controllers\Admin\FeedbackController');
 });

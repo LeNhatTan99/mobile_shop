@@ -28,6 +28,7 @@ class ProductController extends Controller
             'color'=>['required','string'],
             'thumbnail'=>['required', 'image'],
             'description'=>['required','string','min:15'],
+            'parameter'=>['required','string','min:15'],
             'status'=>['required','between:0,1'],
             'inventory'=>['required','between:0,1000'],
         ]);
@@ -85,6 +86,7 @@ class ProductController extends Controller
            'thumbnail'=>$imageUrl,
            'status'=>$request->status,
            'description'=>$request->description,
+           'parameter'=>$request->parameter,
            'inventory'=>$request->inventory,
            'slug' => Str::slug($request->name),
 
@@ -155,6 +157,7 @@ class ProductController extends Controller
            'thumbnail'=>$imageUrl,
            'status'=>$request->status,
            'description'=>$request->description,
+           'parameter'=>$request->parameter,
            'inventory'=>$request->inventory,
            'slug' => Str::slug($request->name),
 

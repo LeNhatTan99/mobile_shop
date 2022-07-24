@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Public;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -16,26 +15,21 @@ class CategoryController extends Controller
    public function getListProduct($slug)
    {
     $col = ['products.*', DB::raw('categories.slug as category_slug')];
-    $products = Product::get();
     $productNew = Product::where('status','=', 1)->orderBy('products.price', 'desc')->get();
     $productMobile = Product::join('category_product', 'products.id', '=', 'category_product.product_id' )
     ->join('categories', 'category_product.category_id', '=', 'categories.id')
-    ->where('categories.id', 1)->orderBy('products.discount', 'desc')->get($col);
+    ->where('categories.id', 1)->orderBy('products.discount', 'desc')->orderBy('products.price','desc')->get($col);
     $productTablet =  Product::join('category_product', 'products.id', '=', 'category_product.product_id' )
     ->join('categories', 'category_product.category_id', '=', 'categories.id')
-    ->where('categories.id', 2)->orderBy('products.discount', 'desc')->get($col);
+    ->where('categories.id', 2)->orderBy('products.discount', 'desc')->orderBy('products.price','desc')->get($col);
     $productAccessory =  Product::join('category_product', 'products.id', '=', 'category_product.product_id' )
     ->join('categories', 'category_product.category_id', '=', 'categories.id')
-    ->where('categories.id', 3)->orderBy('products.discount', 'desc')->get($col);
+    ->where('categories.id', 3)->orderBy('products.discount', 'desc')->orderBy('products.price','desc')->get($col);
 
-    $categories = Category::orderBy('id','DESC')->get();
     $category_slug = Category::where('slug',$slug)->first();
-    $products = Product::get();
+
     $viewData=[
         'category_slug'=>$category_slug,
-        'categories'=>$categories,
-        'products'=>$products,
-        'products'=>$products,
         'productNew'=>$productNew,
         'productMobile'=>$productMobile,
         'productTablet'=>$productTablet,

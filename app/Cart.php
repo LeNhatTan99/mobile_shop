@@ -43,14 +43,21 @@ class Cart
     }
 
     public function updateItemCart($id,$qty){
+
+        $product = $this->products[$id]['productInfo'];
+
+        if($product->discount > 0){
+            $price = $product->discount;
+        } else $price = $product->price;
         $this->totalQty -= $this->products[$id]['qty'];
         $this->totalPrice -= $this->products[$id]['price'];
 
         $this->products[$id]['qty'] = $qty;
-        $this->products[$id]['price'] = $qty*$this->products[$id]['price'];
+        $this->products[$id]['price'] =$qty* $price;
 
         $this->totalQty += $this->products[$id]['qty'];
         $this->totalPrice += $this->products[$id]['price'];
+      
 }
 
 

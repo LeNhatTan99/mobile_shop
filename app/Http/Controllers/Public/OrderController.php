@@ -5,18 +5,14 @@ namespace App\Http\Controllers\Public;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Session;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('frontend.info_order');
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -24,8 +20,9 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-        //
+        return view('frontend.orders.order_create');
     }
 
     /**
@@ -36,41 +33,32 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'name'=>$request->name,
+            'phone_number'=>$request->phone_number,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'product_name'=>$request->product_name,
+            "qty"=>$request->qty,
+            "total_price"=>$request->total_price,
+            'note'=>$request->note,
+            'slug' => Str::slug($request->product_name),
+        ];
+        DB::beginTransaction();
+        try {
+          $order =  Order::create($data);
+            DB::commit();
+            return redirect()->route('checkout.success');
+        } catch (\Exception $e) {
+            //throw $th;
+            Log::error($e->getMessage());
+            DB::rollBack();
+            return back()->with('error', 'Đặt hàng thất bại');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
+    public function checkoutSuccess(){
+        return view('frontend.orders.order_success');
     }
 
     /**

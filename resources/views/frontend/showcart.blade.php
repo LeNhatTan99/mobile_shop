@@ -34,7 +34,6 @@
                                     <th class="p-name">Tên sản phẩm</th>
                                     <th>Số lượng</th>
                                     <th>Giá</th>
-                                    <th>Cập nhật</th>
                                     <th>Xoá</th>
                                 </tr>
                             </thead>
@@ -46,17 +45,17 @@
                             <tr>
                                 <td class="cart-pic"><img src="{{ asset('storage/' . $product['productInfo']->thumbnail)}}" alt=""></td>
                                 <td class="cart-title">
-                                    <h5>{{$product['productInfo']->name}}</h5>
+                                    <h5>{{$product['productInfo']->name}} </h5>
                                 </td>
                                 <td class="qua-col">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <input type="number" min="1" value="{{$product['qty']}}" id="product_{{ $product['productInfo']->id }}">
+                                                <input  type="number" min="1" value="{{$product['qty']}}" onclick="updateItemCart(this)" name="qty"  id="{{ $product['productInfo']->id }}">
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="total-price">{{number_format($product['price'])}} &#8363;</td>
-                                <td class="close-td"><a href="{{route('update.cart',[$product['productInfo']->id,$product['qty']])}}" class="btn btn-info update-item">Lưu</i></a></td>
                                 <td class="close-td"><a href="{{route('delete.cart',$product['productInfo']->id)}}" class="btn btn-danger">X</a></td>
                             </tr>
                         </div>
@@ -70,7 +69,7 @@
                             <ul>
                                 <li class="cart-total">Tổng tiền: <span>{{number_format(Session::get('cart')->totalPrice)}} &#8363;</span></li>
                             </ul>
-                            <a href="#" class="proceed-btn">Đặt hàng</a>
+                            <a href="{{route('order')}}" class="proceed-btn">Tiến hành đặt hàng</a>
                         </div>
                     </div>
                 </div>
@@ -80,7 +79,14 @@
         </div>
     </div>
 </section>
+<script>
+      function updateItemCart(id) {
 
+        var url = 'updateItemCart/'+id.id+'/'+id.value;
+       window.location.href = url
+    }
+
+</script>
 
 @endsection
 

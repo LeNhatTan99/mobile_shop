@@ -13,7 +13,9 @@ body {
 .layout_margin {
   margin: 90px 0;
 }
-
+.margin-bottom {
+    margin-bottom: 120px;
+}
 .layout_padding2 {
   padding: 75px 0;
 }
@@ -92,13 +94,18 @@ a:focus {
 .alert {
     text-align: center;
     font-weight: bold;
+    width: 40%;
+    margin: 24px;
+}
+.arlert p {
+    margin: 0;
 }
 
 /* header dropdown */
+
 .dropdown-menu{
  background-color: #fff;
  min-width: 10rem;
- padding: 10px;
  margin: 0;
 }
 .dropdown-menu a {
@@ -152,13 +159,13 @@ a:focus {
   padding-right: 25px;
 }
 
-.sub_page .hero_area {
+ .hero_area {
   min-height: auto;
   border-radius: 0 0 45px 0;
   padding-left: 0;
 }
 
-.sub_page .header_section {
+ .header_section {
   -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
 }
@@ -166,6 +173,8 @@ a:focus {
 .header_section {
   padding: 15px 0;
   background-image: linear-gradient(to right, #6047DF , #E5CCC3);
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .header_section .container-fluid {
@@ -188,20 +197,21 @@ a:focus {
   margin: auto;
 }
 
-.custom_nav-container .navbar-nav .nav-item .nav-link {
-  padding: 5px 25px;
+ .navbar-nav .nav-item .nav-link {
+
+  padding: 5px 15px;
   color: #000000;
   text-align: center;
   text-transform: uppercase;
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  display: inline-block;
 }
 
-.custom_nav-container .navbar-nav .nav-item:hover .nav-link, .custom_nav-container .navbar-nav .nav-item.active .nav-link {
+ .navbar-nav .nav-item:hover .nav-link, .custom_nav-container .navbar-nav .nav-item.active .nav-link {
   color: #000000;
   background-color: #cd8ce7;
-
 }
 
 .custom_nav-container .navbar-toggler {
@@ -344,7 +354,7 @@ a:focus {
   margin-bottom: 20px;
 }
 
-.slider_section .detail-box .btn-box {
+ .btn-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -352,13 +362,13 @@ a:focus {
   margin-top: 15px;
 }
 
-.slider_section .detail-box .btn-box a {
+ .detail-box .btn-box a {
   margin: 5px;
   text-align: center;
   width: 185px;
 }
 
-.slider_section .detail-box .btn-box .btn1 {
+ .btn-box .btn1 {
   display: inline-block;
   padding: 12px 15px;
   background-color: #e6c511;
@@ -369,7 +379,7 @@ a:focus {
   border: 1px solid #e6c511;
 }
 
-.slider_section .detail-box .btn-box .btn1:hover {
+ .btn-box .btn1:hover {
   color: #ffffff;
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
@@ -991,7 +1001,6 @@ object-fit: cover;
     width: 80%;
     border-radius: 7px 7px 7px 7px;
     box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
-
   }
 
 .product span {
@@ -1090,20 +1099,39 @@ object-fit: cover;
 
   }
 /* add Cart */
+.add-cart{
+    font-size: 12px;
+    border-radius: 40px;
+    text-align: center;
+    background-color: aqua;
+}
   .product-price-btn .add-to-cart {
-
     display: inline-block;
     padding: 18px;
     width: 176px;
     text-align: center;
-    border-radius: 60px;
+    border-radius: 40px;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: #000;
-    background-color:  rgb(236, 218, 62);
+    background-color:  rgb(236, 56, 56);
     cursor: pointer;
+    outline: none;
+  }
+ .out-of-stock {
+    display: inline-block;
+    padding: 18px;
+    width: 200px;
+    text-align: center;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #000;
+    background-color:  #ccc;
     outline: none;
   }
 
@@ -1119,6 +1147,14 @@ object-fit: cover;
  /*---------------------
   Shopping Cart
 -----------------------*/
+.item-order{
+    margin: 80px;
+}
+.box-center{
+    display: flex;
+    justify-content: center;
+}
+
 .select-items table {
 	width: 100%;
 }
@@ -1387,7 +1423,7 @@ object-fit: cover;
 	float: right;
 }
 
-.proceed-checkout .proceed-btn {
+ .proceed-btn {
 	font-size: 14px;
 	font-weight: 700;
 	color: #ffffff;
@@ -1396,8 +1432,15 @@ object-fit: cover;
 	padding: 15px 25px 14px 25px;
 	display: block;
 	text-align: center;
+    margin-bottom: 12px;
 }
-
+.checkout-btn {
+    width: 80%;
+    margin: 12px auto;
+}
+.proceed-btn:hover {
+    color: rgb(19, 177, 32)
+}
 
 /* profile */
 .gradient-custom {
@@ -1410,3 +1453,4 @@ object-fit: cover;
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
     }
+

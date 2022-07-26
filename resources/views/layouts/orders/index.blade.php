@@ -1,39 +1,42 @@
 @extends('layouts.app')
 @section('content')
 
-<a href="{{route('brands.create')}}" class="btn btn-success">Tạo thêm thương hiệu</a>
-@if ($brands->count())
+
+@if ($orders->count())
 
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Logo</th>
-      <th scope="col">Acction</th>
+        <th scope="col">Mã đơn hàng</th>
+        <th scope="col">Tên KH</th>
+        <th scope="col">Ngày đặt</th>
+        <th scope="col">Trạng thái</th>
+      <th scope="col">Hành động</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($brands as $brand)
+      @foreach ($orders as $order)
       <tr>
-        <td>{{$brand->id}}</td>
-        <td>{{$brand->name}}</td>
-        <td>{{$brand->logo}}</td>
+        <td>{{$order->id}}</td>
+        <td>{{$order->name}}</td>
+        <td>{{$order->created_at}}</td>
         <td>
-            <a href="{{route('brands.show',['brand'=>$brand->id])}}" class="btn btn-info">View</a>
-            <a href="{{route('brands.edit',['brand'=>$brand->id])}}" class="btn btn-primary">Edit</a>
-            <form action="{{route('brands.destroy',['brand'=>$brand->id])}}" method="POST" style="display: inline-block">
-            @csrf
-            @method('delete')
-                <button class="btn btn-danger" type="submit">Delete</button>
-            </form>
+            @if ($order->status == 0)
+            <span>Đang xử lý</span>
+            @else
+            <span>Đã xử lý</span>
+            @endif
+        </td>
+        <td>
+            <a href="{{route('orders.show',['order'=>$order->id])}}" class="btn btn-info">Chi tiết</a>
+            <a href="{{route('orders.edit',['order'=>$order->id])}}" class="btn btn-primary">Cập nhật</a>
         </td>
     </tr>
       @endforeach
     </tbody>
   </table>
   @else
-  <h4>Chưa có thương hiệu nào được tạo!</h4>
+  <h4>Hiện chưa có đơn hàng nào</h4>
 @endif
 
   @endsection

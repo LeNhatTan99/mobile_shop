@@ -49,10 +49,16 @@
                         @endif
                     </div>
                 </div>
+                @if ($product->inventory == 0)
                 <div class="product-price-btn">
-                  <a href="{{route('add.cart',$product->id)}}" onclick="addCart()" class="add-to-cart">Mua ngay</a>
-                  {{-- <a href="" onclick="addCart()" type="button" class="addCart">Mua Ngay</a> --}}
-                </div>
+                    <button class="out-of-stock">Hết hàng</button>
+                  </div>
+                @else
+                <div class="product-price-btn">
+                    <a href="{{route('add.cart',$product->id)}}" class="add-to-cart">Thêm vào giỏ</a>
+                  </div>
+                @endif
+
               </div>
         </div>
 

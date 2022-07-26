@@ -5,24 +5,17 @@
     {{session('error')}}
 </div>
 @endif
-<form action="{{route('brands.update',['brand'=>$brand->id])}}" method="POST">
+<form action="{{route('orders.update',['order'=>$order->id])}}" method="POST">
+    <h4>Cập nhật trạng thái đơn hàng</h4>
     @csrf
     @method('PUT')
-    <div class="mb-3">
-        <label  class="form-label">Name</label>
-        <input type="text" name="name" class="form-control" value="{{old('name',$brand->name)}}" >
-        @if ($errors->has('name'))
-        <span class="text-danger">{{$errors->first('name')}}</span>
-        @endif
-      </div>
-
       <div class="mb-3">
-        <label  class="form-label">Logo</label>
-        <input type="file" name="logo" class="form-control" value="{{old('name',$brand->logo)}}" >
-        @if ($errors->has('logo'))
-        <span class="text-danger">{{$errors->first('logo')}}</span>
+        <label  class="form-label">Trạng thái ( 0: Đang xử lý | 1: Đã xử lý)</label>
+        <input type="number" name="status" class="form-control" value="{{old('status',$order->status)}}" placeholder=" 0: Đang xử lý | 1: Đã xử lý">
+        @if ($errors->has('status'))
+        <span class="text-danger">{{$errors->first('status')}}</span>
         @endif
       </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
   </form>
 @endsection

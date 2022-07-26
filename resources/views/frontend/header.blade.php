@@ -1,19 +1,17 @@
 
 
-<header class="header_section ">
+<header class="header_section sticky-top navbar-expand-lg">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
+            <h1 class="navbar-brand" >
                 <span>
                     Mobile Shop
                 </span>
-            </a>
-
+            </h1>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class=""> </span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
@@ -28,10 +26,10 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right text-center">
                                         @foreach ($categories as $category )
-                                        <div class="dropdown-divider"></div>
                                         <a href="{{route('get.list.product',[$category->slug])}}" >
                                             <span class="profile_span">{{ $category->category_name }}</span>
                                         </a>
+                                        <div class="dropdown-divider"></div>
                                         @endforeach
                                 </div>
                             </li>
@@ -48,10 +46,10 @@
                                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right text-center">
 
                                      @foreach ($brands as $brand )
-                                     <div class="dropdown-divider"></div>
                                      <a href="{{route('brand.product',[$brand->slug])}}">
-                                         <span class="profile_span">{{ $brand->name }}</span>
-                                     </a>
+                                        <span class="profile_span">{{ $brand->name }}</span>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
                                      @endforeach
                                 </div>
                             </li>
@@ -80,13 +78,16 @@
                             <li class="nav-item dropdown ">
                                 <a class="nav-link profile_link" href="{{route('show.list.cart')}}" role="button"
                                     aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> <b id="count">{{Session::get('cart')->totalQty}}</b>
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    @if(isset(Session::get('cart')->totalQty))
+                                    <strong id="count">{{Session::get('cart')->totalQty}}</strong>
+                                    @else <strong>0</strong>
+                                    @endif
                                 </a>
                             </li>
                         </ul>
                     </li>
                   </ul>
-
 
                     @if (!empty(auth()->user()->name))
                         <ul class="navbar-nav align-items-center d-none d-md-flex">
@@ -96,8 +97,8 @@
 
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                     <div class="media-body ml-2 d-none d-lg-block">
-                                        <span class="mb-0 text-md profile_span font-weight-bold">
-                                            {{ auth()->user()->name }}</span>
+                                        <strong class="mb-0 text-md profile_span font-weight-bold">
+                                            {{ auth()->user()->name }}</strong>
                                     </div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right text-center">
@@ -106,10 +107,6 @@
                                     </div>
                                     <a href="{{ route('profile.edit') }}">
                                         <span class="profile_span">{{ __('Hồ sơ của tôi') }}</span>
-                                    </a>
-
-                                    <a href="#">
-                                        <span class="profile_span">{{ __('Hoạt động') }}</span>
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a href="{{ route('logout') }}"

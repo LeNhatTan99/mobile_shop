@@ -5,13 +5,14 @@
         <section class="slider_section ">
             <div id="customCarousel1" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
+                    {{-- @for ($i=1;$i<3;$i++) --}}
                     <div class="carousel-item active">
                         <div class="container-fluid ">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="detail-box">
                                         <h1>
-                                            iPhone 13 Pro Max
+                                            iPhone 13 Pro Max 
                                         </h1>
                                         <p>
                                             iPhone 13 Pro Max màn hình được trang bị công nghệ ProMotion 120 Hz cực mượt.
@@ -35,6 +36,8 @@
                             </div>
                         </div>
                     </div>
+                    {{-- @endfor --}}
+
                     <div class="carousel-item ">
                         <div class="container-fluid ">
                             <div class="row">

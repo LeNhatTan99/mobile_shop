@@ -42,21 +42,25 @@ class CartController extends Controller
            $viewData = [
             'newCart'=> $newCart,
         ];
-        return back()->with('success', 'Đã xoá sản phẩm thành công');
+        return redirect()->route('show.list.cart')->with('success','Đã xoá sản phẩm thành công');
     }
 
 public function   updateItemCart(Request $request,$id,$qty){
-
     $cart = Session('cart') ? Session('cart') : null;
+
+    if($qty <=  $cart->products[$id]['productInfo']->inventory)
+   {
     $newCart = new Cart($cart);
     $newCart->updateItemCart($id,$qty);
     $request->session()->put('cart',$newCart);
-
-    return view('frontend.showcart')->with('success', 'Đã cập nhật số lượng thành công');;
+     return redirect()->route('show.list.cart')->with('success', 'Đã thay đổi số lượng thành công');
+   }
+   else return back()->with('error','Hiện không có đủ sản phẩm để thêm');
 }
 
 public function showCart(){
     return view('frontend.showcart');
 }
+
 
 }

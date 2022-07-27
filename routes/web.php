@@ -25,6 +25,7 @@ Route::get('cart/order/checkout', 'App\Http\Controllers\Public\OrderController@s
 Route::get('cart/order/checkout-success', 'App\Http\Controllers\Public\OrderController@checkoutSuccess')->name('checkout.success');
 
 
+
 //Member
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
@@ -44,3 +45,9 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:admin']], fun
     Route::resource('orders','App\Http\Controllers\Admin\OrderController');
     Route::resource('feedbacks','App\Http\Controllers\Admin\FeedbackController');
 });
+
+
+//Mail
+Route::post('/resign-email', 'App\Http\Controllers\SendMailController@sendMail')->name('sendMail');
+Route::post('cart/order/checkout-sendmail', 'App\Http\Controllers\Public\OrderController@sendMailCheckout')->name('sendMail.checkout');
+

@@ -57,11 +57,10 @@
                     <h4>
                         Đăng ký nhận tin
                     </h4>
-                    <form action="#">
-                        <input type="text" placeholder="Nhập email" />
-                        <button type="submit">
-                            Đăng ký
-                        </button>
+                    <form action="{{ route('sendMail') }}" method="post" class="resign_form">
+                    @csrf
+                    <input type="email" name="email" placeholder="Nhập email của bạn" class="form-control" required>
+                    <button type="submit" class="btn-submit">Gửi Thông Báo Mail</button>
                     </form>
                 </div>
             </div>

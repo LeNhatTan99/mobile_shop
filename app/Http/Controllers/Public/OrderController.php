@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Session;
+use App\Events\CreateOrder;
 
 class OrderController extends Controller
 {
@@ -48,6 +48,8 @@ class OrderController extends Controller
         try {
           $order =  Order::create($data);
             DB::commit();
+            $request->session()->forget('cart');
+            event(new CreateOrder($order));
             return redirect()->route('checkout.success');
         } catch (\Exception $e) {
             //throw $th;

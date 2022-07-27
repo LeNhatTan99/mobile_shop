@@ -25,7 +25,7 @@ class CartController extends Controller
         $viewData = [
             'newCart'=> $newCart,
         ];
-       return back()->with('success', 'Đã thêm '. $product->name .' vào giỏ hàng thành công');
+       return redirect()->route('show.list.cart')->with('success', 'Đã thêm '. $product->name .' vào giỏ hàng thành công');
     }
 
 

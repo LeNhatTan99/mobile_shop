@@ -1454,3 +1454,8 @@ object-fit: cover;
     background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
     }
 
+/* font-weight bold */
+.bold{
+    font-weight: bold;
+    color: #000;
+}

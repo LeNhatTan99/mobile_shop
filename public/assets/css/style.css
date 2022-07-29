@@ -72,6 +72,8 @@ margin-top: 24px;
 }
 .profile_span{
     font-size: 14px;
+    text-transform: none;
+    text-align: start;
 }
 a,
 a:hover,
@@ -171,7 +173,7 @@ a:focus {
 }
 
 .header_section {
-  padding: 15px 0;
+  padding: 10px ;
   background-image: linear-gradient(to right, #6047DF , #E5CCC3);
   font-size: 15px;
   font-weight: bold;
@@ -182,7 +184,9 @@ a:focus {
   padding-left: 25px;
 
 }
-
+.navbar-brand{
+    text-transform: uppercase;
+}
 .navbar-brand span {
   font-weight: bold;
   color: #000000;
@@ -1147,12 +1151,28 @@ object-fit: cover;
  /*---------------------
   Shopping Cart
 -----------------------*/
+.info-order p {
+    margin: 8px 10%;
+
+}
+
+.thumbnail-info-order{
+    margin-left: 40px;
+    width: 30%;
+    border-radius: 10px;
+    -webkit-box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25), -2px -2px 3px 0 rgba(0, 0, 0, 0.05);
+             box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25), -2px -2px 3px 0 rgba(0, 0, 0, 0.05);
+
+}
 .item-order{
     margin: 80px;
 }
 .box-center{
     display: flex;
     justify-content: center;
+}
+.header-table-cart{
+margin: 24px;
 }
 
 .select-items table {
@@ -1245,6 +1265,17 @@ object-fit: cover;
     text-transform: uppercase;
     margin-left: 80px;
 }
+.breadcrumb-text .cart {
+	display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 50px;
+    color: #000;
+}
+.breadcrumb-text .cart:hover{
+    color: #6047DF;
+}
+
 .cart-table {
 	margin-bottom: 40px;
 }
@@ -1459,3 +1490,36 @@ object-fit: cover;
     font-weight: bold;
     color: #000;
 }
+
+/* css form login register */
+.ftco-section {
+    padding: 5em 0; }
+
+ .ftco-section .form-control {
+        height: 48px;
+        color: #000;
+        font-size: 16px;
+        border-radius: 50px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: 1px solid transparent;
+        padding-left: 20px;
+        padding-right: 20px;
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out; }
+
+      .thumbnail-form {
+        width: 520px;
+        margin: auto;
+        background-color: #c3aaca;
+        border-radius:  6px;
+        box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+      }
+      @media (max-width: 991.98px) {
+        .thumbnail-form {
+          width: 100%; } }
+.btn-login{
+    background-color: #df8b47;
+}
+

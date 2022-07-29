@@ -48,10 +48,9 @@
                   <p>{{ session('success') }}</p>
             </div>
             @endif
-        @endif
+            @endif
             @yield('content')
         </div>
-
         @guest()
             @include('layouts.footers.guest')
         @endguest

@@ -33,7 +33,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
     Route::put('feedback','App\Http\Controllers\Auth\FeedbackController@store')->name('feedback');
-    Route::get('orderInfo','App\Http\Controllers\Auth\OrderController@orderInfo')->name('order.info');
+    Route::get('showCart/order','App\Http\Controllers\Auth\OrderController@showOrderCart')->name('show.order.cart');
+
 });
 
 //Admin

@@ -36,7 +36,6 @@
                             <span>
                                 Đà Nẵng
                             </span>
-                        </a>
                         <a href="">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             <span>

@@ -1,53 +1,69 @@
 @extends('layouts.app')
 @section('content')
-<table class="table col-6">
-    <h4>Thông tin đơn hàng</h4>
-<tr>
-    <td >Tên KH:</td>
-    <td>{{$order->name}}</td>
-</tr>
-<tr>
-    <td >Địa chỉ:</td>
-    <td>{{$order->address}}</td>
-</tr>
-<tr>
-    <td >Số điện thoại:</td>
-    <td>{{$order->phone_number}}</td>
-</tr>
-<tr>
-    <td >Email:</td>
-    <td>{{$order->email}}</td>
-</tr>
-<tr>
-    <td >Tên sản phẩm:</td>
-    <td>{{$order->product_name}}</td>
-</tr>
-<tr>
-    <td >Số lượng:</td>
-    <td>{{$order->qty}}</td>
-</tr>
-<tr>
-    <td >Tổng tiền:</td>
-    <td>{{$order->total_price}}</td>
-</tr>
-<tr>
-    <td >Ngày đặt:</td>
-    <td>{{$order->created_at}}</td>
-</tr>
-<tr>
-    <td >Trạng thái:</td>
-    <td>
-        @if ($order->status == 0)
-        <span>Đang xử lý</span>
-        @else
-        <span>Đã xử lý</span>
-        @endif
-    </td>
-</tr>
-<tr>
-    <td >Ghi chú của KH:</td>
-    <td>{{$order->note}}</td>
-</tr>
-</table>
 
+<div class="row">
+    <h4>Thông tin đơn hàng</h4>
+<div>
+    <table class="table col-6">
+        <tr>
+            <td >Tên KH:</td>
+            <td>{{$info['name']}}</td>
+        </tr>
+        <tr>
+            <td >Địa chỉ:</td>
+            <td>{{$info['address']}}</td>
+        </tr>
+        <tr>
+            <td >Số điện thoại:</td>
+            <td>{{$info['phone_number']}}</td>
+        </tr>
+        <tr>
+            <td >Email:</td>
+            <td>{{$info['email']}}</td>
+        </tr>
+        <tr>
+            <td >Ngày đặt hàng:</td>
+            <td>{{$info['created_at']}}</td>
+        </tr>
+        <tr>
+            <td >Trạng thái:</td>
+            <td>
+                @if ($info['status'] == 0)
+                <span>Đang xử lý</span>
+                @else
+                <span>Đã xử lý</span>
+                @endif
+            </td>
+        </tr>
+        <tr>
+            <td >Ghi chú của KH:</td>
+            <td>{{$info['note']}}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="div">
+    <table class="table col-6">
+        <tr>
+            <th >Tên sản phẩm</th>
+            <th >Số lượng</th>
+            <th >Đơn giá</th>
+            <th >Thành tiền</th>
+        </tr>
+        @foreach ($products as $product )
+        <tr>
+        <td>{{$product->product_name}}</td>
+        <td>{{$product->qty}}</td>
+        @if($product->discount > 0)
+        <td>{{number_format($product->discount)}} đ</td>
+        <td>{{number_format($product->discount * $product->qty)}} đ</td>
+        @else
+        <td>{{number_format($product->price)}} đ</td>
+        <td>{{number_format($product->price * $product->qty)}} đ</td>
+        @endif
+    </tr>
+        @endforeach
+    </table>
+</div>
+</div>
 @endsection

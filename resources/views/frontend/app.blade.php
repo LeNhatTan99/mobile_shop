@@ -18,6 +18,7 @@
  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <title>Mobile Shop</title>
 
+  <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -26,7 +27,6 @@
 
   <!-- font awesome style -->
   <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet" />
-
 
   <!-- Custom styles for this template -->
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" />

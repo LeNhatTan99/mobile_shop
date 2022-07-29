@@ -14,10 +14,17 @@ class Order extends Model
         'phone_number',
         'email',
         'address',
-        'product_name',
-        "qty",
-        "total_price",
         'note',
         'slug',
     ];
+
+    /**
+     * The products that belong to the Order
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->withPivot('qty');
+    }
 }

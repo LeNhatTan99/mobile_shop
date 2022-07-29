@@ -38,5 +38,5 @@
   @else
   <h4>Hiện chưa có đơn hàng nào</h4>
 @endif
-
+{{ $orders->links('pagination') }}
   @endsection

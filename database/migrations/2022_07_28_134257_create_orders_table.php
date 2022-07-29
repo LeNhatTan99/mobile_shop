@@ -20,11 +20,8 @@ class CreateOrdersTable extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('phone_number');
-            $table->string('product_name');
-            $table->mediumInteger('qty');
-            $table->string('total_price');
             $table->mediumText('slug');
-            $table->longText('note')->default(null);
+            $table->longText('note')->nullable();
             $table->timestamps();
         });
     }

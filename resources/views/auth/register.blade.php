@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'bg-default'])
+{{-- @extends('layouts.app', ['class' => 'bg-default'])
 
 @section('content')
     @include('layouts.headers.guest')
@@ -107,4 +107,45 @@
             </div>
         </div>
     </div>
+@endsection --}}
+
+@extends('frontend.app')
+@section('content')
+<section class="ftco-section">
+    <div class="container">
+
+        <div class="row justify-content-center thumbnail-form">
+            <div class="col-md-12 col-lg-10">
+
+                    <div class=" p-4 p-lg-5 col-12">
+                  <div class="d-flex">
+                      <div class="w-100">
+                          <h3 class="mb-4 text-center"><strong>Đăng ký</strong></h3>
+                      </div>
+                  </div>
+                        <form role="form" method="POST" action="{{ route('login') }}" class="signin-form">
+                        @csrf
+                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                            <label class="label" for="name"><strong>Họ và tên</strong></label>
+                            <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Họ và tên') }}" type="text" name="name" value="{{ old('name') }}" required autofocus>
+
+                        @if ($errors->has('name'))
+                            <span class="invalid-feedback" style="display: block;" role="alert">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                <div class="form-group">
+                    <button type="submit" class="form-control btn btn-login submit px-3"><strong>Đăng nhập</strong></button>
+                </div>
+
+              </form>
+
+          </div>
+            </div>
+
+    </div>
+</section>
+
 @endsection

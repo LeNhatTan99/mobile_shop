@@ -7,9 +7,12 @@
 <p>Địa chỉ giao hàng: {{$order->address}}</p>
 <p>Số điện thoại: {{$order->phone_number}}</p>
 <p>Email: {{$order->email}}</p>
-<p>Tên sản phẩm: {{$order->product_name}}</p>
-<p>Số lượng: {{$order->qty}}</p>
-<p>Tổng tiền: {{number_format($order->total_price)}}đ</p>
+    @foreach (Session::get('cart')->products as $product )
+    <p> <strong>Tên sản phẩm:</strong> {{$product['productInfo']->name}},
+        <strong>số lượng: {{$product['qty']}} </strong>,
+        <strong>đơn giá: {{$product['price']}} &#8363;</strong></p>
+    @endforeach
+<p>Tổng tiền: {{number_format(Session::get('cart')->totalPrice)}} &#8363;</p>
 <p>Ghi chú: {{$order->note}}</p>
 </div>
 <p>Cảm ơn bạn đã sử dụng dịch vụ của Mobile Shop!</p>

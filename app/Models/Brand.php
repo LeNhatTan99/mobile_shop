@@ -9,6 +9,14 @@ class Brand extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    const VIEWABLE = [
+        'apple' => 'apple',
+        'samsung' => 'samsung',
+        'oppo' => 'oppo',
+        'vivo' => 'vivo',
+        'xiaomi' => 'xiaomi',
+    ];
     protected $fillable = [
         'name',
         'logo',

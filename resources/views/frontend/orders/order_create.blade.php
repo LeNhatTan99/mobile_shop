@@ -22,16 +22,16 @@
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span>Giỏ hàng</span>
                     </h4>
+                    @if (isset(Session::get('cart')->products))
                     @foreach (Session::get('cart')->products as $product )
+                    <input type="hidden" value="{{$product['qty']}}" name="products_qty[{{$product['productInfo']->id}}]">
                     <ul class="list-group mb-3">
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
                               <div class="product_name">
-                                <input type="hidden" value="{{$product['productInfo']->name}}" name="product_name">
                                 <h6 class="my-0">{{$product['productInfo']->name}}</h6>
                               </div>
                                <div class="product_qty">
-                                <input type="hidden" value="{{$product['qty']}}" name="qty">
                                 <small class="text-muted">{{number_format($product['price'])}} x {{$product['qty']}}</small>
                                </div>
                             </div>
@@ -41,6 +41,8 @@
                         </li>
                     </ul>
                     @endforeach
+                    @endif
+
                     <li class="list-group-item d-flex justify-content-between">
                         <strong>Tổng tiền</strong>
                         <div class="total_price">

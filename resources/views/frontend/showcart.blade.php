@@ -13,8 +13,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text product-more">
-                    <span> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng </span>
+                    <a class="cart" href="{{route('show.list.cart')}}"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng </a>
                 </div>
+
             </div>
         </div>
     </div>
@@ -40,7 +41,6 @@
                             <tbody>
 
                             @foreach (Session::get('cart')->products as $product )
-
                             <div id="change-item-cart">
                             <tr>
                                 <td class="cart-pic"><img src="{{ asset('storage/' . $product['productInfo']->thumbnail)}}" alt=""></td>
@@ -50,7 +50,7 @@
                                 <td class="qua-col">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                                <input  type="number" min="1" value="{{$product['qty']}}" onclick="updateItemCart(this)" name="qty"  id="{{ $product['productInfo']->id }}">
+                                                <input  type="number" min="1" value="{{$product['qty']}}" onclick="updateItemCart(this)" name="qty[{{$product['productInfo']->id}}][]"  id="{{ $product['productInfo']->id }}">
                                             </div>
                                         </div>
                                     </div>

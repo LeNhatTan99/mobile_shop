@@ -41,14 +41,9 @@ class Product extends Model
       return $this->belongsToMany(Brand::class);
   }
 
-  /**
-   * Get all of the product_images for the Product
-   *
-   * @return \Illuminate\Database\Eloquent\Relations\HasMany
-   */
-  public function product_images()
+  public function orders()
   {
-      return $this->hasMany(Product_image::class);
+      return $this->belongsToMany(Order::class);
   }
 }
 

@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Session;
+use App\Events\CreateOrder;
+
 
 class OrderController extends Controller
 {
@@ -33,21 +35,46 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = [
             'name'=>$request->name,
             'phone_number'=>$request->phone_number,
             'email'=>$request->email,
             'address'=>$request->address,
-            'product_name'=>$request->product_name,
-            "qty"=>$request->qty,
-            "total_price"=>$request->total_price,
             'note'=>$request->note,
-            'slug' => Str::slug($request->product_name),
+            'slug' => Str::slug($request->name),
         ];
+
         DB::beginTransaction();
         try {
+
           $order =  Order::create($data);
+          $orderId = $order->id;
+          $data = [];
+          foreach ($request->products_qty as $productId => $qty) {
+            $data[] = [
+                'order_id' => $orderId,
+                'product_id' => $productId,
+                'qty' => $qty,
+            ];
+        }
+        $order->products()->sync($data);
+        // dd($order->products()->qty);
+        // foreach ($data as $item) {
+        //     dd($item['qty']);
+        //  };
+
+        //   foreach ($order->products as $product) {
+        //     dd($product->inventory);
+        //  };
+
+
+
+
+
             DB::commit();
+            event(new CreateOrder($order,$data));
+            $request->session()->forget('cart');
             return redirect()->route('checkout.success');
         } catch (\Exception $e) {
             //throw $th;

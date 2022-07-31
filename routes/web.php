@@ -10,7 +10,7 @@ Auth::routes();
 
 // Public
 Route::get('/', 'App\Http\Controllers\Public\HomeController@index')->name('home');
-Route::get('/home', 'App\Http\Controllers\Public\HomeController@index')->name('home');
+Route::get('/home', 'App\Http\Controllers\Public\HomeController@index');
 Route::get('category/{slug}', 'App\Http\Controllers\Public\CategoryController@getListProduct')->name('get.list.product');
 Route::get('product/{slug}', 'App\Http\Controllers\Public\ProductController@productDetail')->name('product.detail');
 Route::get('brand/{slug}', 'App\Http\Controllers\Public\BrandController@getListProduct')->name('brand.product');
@@ -25,6 +25,7 @@ Route::get('cart/order/checkout', 'App\Http\Controllers\Public\OrderController@s
 Route::get('cart/order/checkout-success', 'App\Http\Controllers\Public\OrderController@checkoutSuccess')->name('checkout.success');
 
 
+
 //Member
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
@@ -32,7 +33,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
     Route::put('feedback','App\Http\Controllers\Auth\FeedbackController@store')->name('feedback');
-    Route::get('orderInfo','App\Http\Controllers\Auth\OrderController@orderInfo')->name('order.info');
+    Route::get('profile/order','App\Http\Controllers\Auth\OrderController@showProfileOrder')->name('show.profile.order');
+
 });
 
 //Admin
@@ -44,3 +46,8 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:admin']], fun
     Route::resource('orders','App\Http\Controllers\Admin\OrderController');
     Route::resource('feedbacks','App\Http\Controllers\Admin\FeedbackController');
 });
+
+//Mail
+Route::post('/resign-email', 'App\Http\Controllers\SendMailController@sendMail')->name('sendMail');
+Route::post('cart/order/checkout-sendmail', 'App\Http\Controllers\Public\OrderController@sendMailCheckout')->name('sendMail.checkout');
+

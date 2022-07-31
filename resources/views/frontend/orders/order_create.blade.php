@@ -8,7 +8,7 @@
 <main role="main">
     <div class="container margin-bottom mt-4">
         {{-- form order --}}
-        <form class="needs-validation" name="frmthanhtoan" method="post"
+        <form class="needs-validation" method="post"
             action="{{route('checkout')}}">
         @csrf
         @method('GET')
@@ -22,25 +22,27 @@
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
                         <span>Giỏ hàng</span>
                     </h4>
+                    @if (isset(Session::get('cart')->products))
                     @foreach (Session::get('cart')->products as $product )
+                    <input type="hidden" value="{{$product['qty']}}" name="products_qty[{{$product['productInfo']->id}}]">
                     <ul class="list-group mb-3">
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
                               <div class="product_name">
-                                <input type="hidden" value="{{$product['productInfo']->name}}" name="product_name">
                                 <h6 class="my-0">{{$product['productInfo']->name}}</h6>
                               </div>
                                <div class="product_qty">
-                                <input type="hidden" value="{{$product['qty']}}" name="qty">
                                 <small class="text-muted">{{number_format($product['price'])}} x {{$product['qty']}}</small>
                                </div>
                             </div>
                             <div class="total_price">
-                                <span class="text-muted">{{number_format($product['price'])}} &#8363;</span>
+                                <span class="bold">{{number_format($product['price'])}} &#8363;</span>
                             </div>
                         </li>
                     </ul>
                     @endforeach
+                    @endif
+
                     <li class="list-group-item d-flex justify-content-between">
                         <strong>Tổng tiền</strong>
                         <div class="total_price">
@@ -57,22 +59,22 @@
                             <div class="col-md-12">
                                 <label for="name">Họ tên</label>
                                 <input type="text" class="form-control" name="name" id="name"
-                                    value="{{auth()->user()->name}}" >
+                                    value="{{auth()->user()->name}}" readonly="" >
                             </div>
                             <div class="col-md-12">
                                 <label for="address">Địa chỉ</label>
                                 <input type="text" class="form-control" name="address" id="address"
-                                    value="{{auth()->user()->address}}" >
+                                    value="{{auth()->user()->address}}" readonly="">
                             </div>
                             <div class="col-md-12">
                                 <label for="phone_number">Số điện thoại</label>
                                 <input type="text" class="form-control" name="phone_number" id="phone_number"
-                                    value="{{auth()->user()->phone_number}}" >
+                                    value="{{auth()->user()->phone_number}}" readonly="">
                             </div>
                             <div class="col-md-12">
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control" name="email" id="email"
-                                    value="{{auth()->user()->email}}" >
+                                    value="{{auth()->user()->email}}" readonly="">
                             </div>
                         </div>
                     @else

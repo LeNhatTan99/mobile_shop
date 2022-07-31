@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<a href="{{route('feedbacks.create')}}" class="btn btn-success">Tạo phản hồi</a>
 @if ($feedbacks->count())
 
 <table class="table">

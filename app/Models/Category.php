@@ -9,11 +9,19 @@ class Category extends Model
 {
     use HasFactory;
 
+    const VIEWABLE = [
+        'dien-thoai' => 'mobile',
+        'may-tinh-bang' => 'tablet',
+        'phu-kien' => 'accessory',
+        'new' => 'abc'
+    ];
+
     protected $fillable=[
         'category_name',
         'slug',
     ];
- /**
+
+    /**
      * Manu-to-many
      * The Product that belong to the Category
      *

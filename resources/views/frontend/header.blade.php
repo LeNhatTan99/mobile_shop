@@ -4,9 +4,9 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
             <h1 class="navbar-brand" >
-                <span>
-                    Mobile Shop
-                </span>
+                <a class="navbar-brand" href="{{route('home')}}">
+                    Mobile shop
+                </a>
             </h1>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('home')}}"><i class="fa fa-home"></i> Trang chủ <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -60,17 +60,6 @@
                     </li>
                 </ul>
                 <div class="user_option-box">
-                    <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-                        <div class="form-group mb-0">
-                            <div class="input-group input-group-alternative">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="height:38px"><i
-                                            class="fa fa-search"></i></span>
-                                </div>
-                                <input class="form-control" placeholder="Tìm kiếm" type="text">
-                            </div>
-                        </div>
-                    </form>
 
                   <ul class="navbar-nav">
                       <li class="nav-item">
@@ -107,6 +96,10 @@
                                     </div>
                                     <a href="{{ route('profile.edit') }}">
                                         <span class="profile_span">{{ __('Hồ sơ của tôi') }}</span>
+                                    </a>
+
+                                    <a href="{{route('show.profile.order')}}">
+                                      <span class="profile_span"> Lịch sử đặt hàng </span>
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a href="{{ route('logout') }}"

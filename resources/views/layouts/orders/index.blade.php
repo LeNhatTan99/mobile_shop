@@ -30,6 +30,11 @@
         <td>
             <a href="{{route('orders.show',['order'=>$order->id])}}" class="btn btn-info">Chi tiết</a>
             <a href="{{route('orders.edit',['order'=>$order->id])}}" class="btn btn-primary">Cập nhật</a>
+            <form action="{{route('orders.destroy',['order'=>$order->id])}}" method="POST" style="display: inline-block">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger"> Xoá </button>
+            </form>
         </td>
     </tr>
       @endforeach
@@ -38,5 +43,5 @@
   @else
   <h4>Hiện chưa có đơn hàng nào</h4>
 @endif
-
+{{ $orders->links() }}
   @endsection

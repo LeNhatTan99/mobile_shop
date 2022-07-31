@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Product;
+use Illuminate\Pagination\Paginator;
 use App\Cart;
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+
+
+
 
     /**
      * Bootstrap any application services.
@@ -35,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
             $view ->with('products',$products);
 
         });
+        Paginator::useBootstrap();
 
     }
 }

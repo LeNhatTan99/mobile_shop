@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'bg-default'])
+{{-- @extends('layouts.app', ['class' => 'bg-default'])
 
 @section('content')
     @include('layouts.headers.guest')
@@ -49,4 +49,54 @@
             </div>
         </div>
     </div>
+@endsection --}}
+
+@extends('frontend.app')
+@section('content')
+<section class="ftco-section">
+    <div class="container">
+
+        <div class="row justify-content-center thumbnail-form">
+            <div class="col-md-12 col-lg-10">
+
+                 <div class="card-body px-lg-5 py-lg-5">
+                        <div class="text-center text-muted mb-4">
+                            <small>{{ __('Reset password') }}</small>
+                        </div>
+
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        @if (session('info'))
+                            <div class="alert alert-info" role="alert">
+                                {{ session('info') }}
+                            </div>
+                        @endif
+
+                        <form role="form" method="POST" action="{{ route('password.email') }}">
+                            @csrf
+
+                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
+                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="form-control btn btn-login submit px-3"><strong>Reset</strong></button>
+                                </div>
+                        </form>
+                    </div>
+
+          </div>
+            </div>
+
+    </div>
+</section>
 @endsection

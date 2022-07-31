@@ -5,13 +5,13 @@
     <section class="shop_section layout_padding">
         <div class="container">
             <div class="heading_container heading_center">
-                    <h2>
+                    <h1>
                         Phụ kiện
-                    </h2>
+                    </h1>
                 </div>
                 <div class="row">
                     @foreach ( $products as $brand => $items )
-                    <h1>{{$brand}}</h1>
+                    <h2>{{$brand}}</h2>
                     @foreach ($items as $product)
                     <div class="col-sm-6 col-xl-3">
                         <div class="box">

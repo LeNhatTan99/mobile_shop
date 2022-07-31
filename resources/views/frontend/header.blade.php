@@ -4,9 +4,9 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
             <h1 class="navbar-brand" >
-                <span>
+                <a class="navbar-brand" href="{{route('home')}}">
                     Mobile shop
-                </span>
+                </a>
             </h1>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,7 +98,7 @@
                                         <span class="profile_span">{{ __('Hồ sơ của tôi') }}</span>
                                     </a>
 
-                                    <a href="{{route('show.order.cart')}}">
+                                    <a href="{{route('show.profile.order')}}">
                                       <span class="profile_span"> Lịch sử đặt hàng </span>
                                     </a>
                                     <div class="dropdown-divider"></div>

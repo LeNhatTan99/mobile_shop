@@ -6,14 +6,14 @@
         <div class="container">
 
             <div class="heading_container heading_center">
-                <h2>
+                <h1>
                     Apple
-                </h2>
+                </h1>
             </div>
             @if ($products->count())
             <div class="row">
                 @foreach ( $products as $category => $items )
-                <h1>{{$category}}</h1>
+                <h2>{{$category}}</h2>
                 @foreach ($items as $product)
                 <div class="col-sm-6 col-xl-3">
                     <div class="box">

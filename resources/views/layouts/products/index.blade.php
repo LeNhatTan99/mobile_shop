@@ -4,6 +4,7 @@
 <a href="{{route('products.create')}}" class="btn btn-success">Tạo thêm sản phẩm</a>
 @if ($products->count())
 
+
 <table class="table">
     <thead>
       <tr>
@@ -13,8 +14,6 @@
         <th scope="col">Thương hiệu</th>
         <th scope="col">Giá</th>
         <th scope="col">Giá KM</th>
-        <th scope="col">Màu</th>
-        <th scope="col">Hình ảnh</th>
         <th scope="col">Trạng thái</th>
         <th scope="col">Số lượng</th>
         <th scope="col">hành động</th>
@@ -39,8 +38,6 @@
         </td>
         <td>{{$product->price}}</td>
         <td>{{$product->discount}}</td>
-        <td>{{$product->color}}</td>
-        <td ><span class="link-image">{{$product->thumbnail}}</span></td>
         <td >
             @if ($product->status != 1)
                 <span>Bình thường</span>
@@ -63,7 +60,7 @@
       @endforeach
     </tbody>
   </table>
-  {{$products->links('pagination')}}
+  {{$products->links()}}
   @else
   <h4>Chưa có sản phẩm nào được tạo!</h4>
 @endif

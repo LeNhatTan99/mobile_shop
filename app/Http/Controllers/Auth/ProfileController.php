@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -32,7 +34,7 @@ class ProfileController extends Controller
 
         auth()->user()->update($request->all());
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        return back()->withStatus(__('Đã cập nhật hồ sơ thành công.'));
     }
 
     /**
@@ -49,6 +51,7 @@ class ProfileController extends Controller
 
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('Password successfully updated.'));
+        return back()->withPasswordStatus(__('Bạn đã đổi mật khẩu thành công.'));
     }
+
 }

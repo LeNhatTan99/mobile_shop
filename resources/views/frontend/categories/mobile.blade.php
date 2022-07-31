@@ -10,12 +10,12 @@
 
 
                 <div class="heading_container heading_center">
-                    <h2>
+                    <h1>
                         Điện thoại
-                    </h2>
+                    </h1>
                 </div>
                 @foreach ( $products as $brand => $items )
-                <h1>{{$brand}}</h1>
+                <h2>{{$brand}}</h2>
                 @foreach ($items as $product)
                 <div class="col-sm-6 col-xl-3">
                     <div class="box">

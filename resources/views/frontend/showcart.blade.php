@@ -50,7 +50,7 @@
                                 <td class="qua-col">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                                <input  type="number" min="1" value="{{$product['qty']}}" onclick="updateItemCart(this)" name="qty[{{$product['productInfo']->id}}][]"  id="{{ $product['productInfo']->id }}">
+                                                <input  type="number" min="1" value="{{$product['qty']}}" onchange="updateItemCart(this)" name="qty[{{$product['productInfo']->id}}][]"  id="{{ $product['productInfo']->id }}">
                                             </div>
                                         </div>
                                     </div>

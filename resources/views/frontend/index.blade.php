@@ -3,35 +3,31 @@
     <div class="hero_area">
         <!-- slider section -->
         <section class="slider_section ">
-            <div id="customCarousel1" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+
                         <div class="container-fluid ">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="detail-box">
                                         <h1>
-                                            iPhone 13 Pro
+                                            Galaxy S22
                                         </h1>
                                         <p>
-                                            iPhone 13 Pro  màn hình được trang bị công nghệ ProMotion 120 Hz cực mượt.
-                                            Nâng cấp lớn nhất đối với màn hình iPhone 13 Pro Max chính là công nghệ
-                                            ProMotion mới.
-                                            Màn hình 6.7 inch này có thể tự động điều chỉnh tốc độ làm mới từ 10 Hz đến 120
-                                            Hz, mang lại hiệu suất tổng thể và hình ảnh động mượt mà hơn
+                                            Siêu phẩm Galaxy S22 nay đã có thêm màu tím Bora Purple hoàn toàn mới, tôn lên vẻ đẹp thời thượng
+                                            của chiếc điện thoại vốn đã là biểu tượng thời trang của làng công nghệ 2022. Phiên bản màu tím được làm nhẹ nhàng, tinh tế,
+                                             bao phủ toàn bộ thân máy, kể cả phần cụm camera hay khung viền mang đến sự thu hút, sang chảnh hơn bao giờ hết.
                                         </p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="img-box">
-                                        <img src="{{ asset('assets/img/banner.jpg') }}" alt="">
+                                        <img src="{{ asset('assets/img/samsungs22.jpg') }}" alt="">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                 </div>
-            </div>
         </section>
         <!-- end slider section -->
     </div>
@@ -154,8 +150,7 @@
             </div>
         </div>
     </section>
-
     <!-- end about section -->
-    @include('frontend.feedback');
-    @include('frontend.footer');
+    @include('frontend.feedback')
+    @include('frontend.footer')
 @endsection

@@ -11,6 +11,8 @@ use App\Models\Category;
 use App\Models\Brand;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Order;
+
 class ProductController extends Controller
 {
 /**
@@ -47,7 +49,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-
         $categories = Category::get();
         $brands = Brand::get();
         $products = Product::paginate(5);
@@ -96,7 +97,7 @@ class ProductController extends Controller
           $product =  Product::create($data);
           $product->categories()->sync($request->categoryIds);
           $product->brands()->sync($request->brandIds);
-          $fileName = $request->file('thumbnail')->storeAs('mobile_image/product_images', Str::slug($request->name).'.'.'jpg');
+        $fileName = $request->file('thumbnail')->storeAs('mobile_image/product_images', Str::slug($request->name).'.'.'jpg');
             DB::commit();
             return redirect()->route('products.index')->with('success', 'Create product success');
         } catch (\Exception $e) {

@@ -41,7 +41,7 @@
     </tbody>
   </table>
 
-{{ $users->links('pagination') }}
+{{ $users->links() }}
   @else
   <h4>Chưa có người dùng nào được tạo!</h4>
 @endif

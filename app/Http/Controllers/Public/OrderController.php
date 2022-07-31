@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
@@ -46,6 +47,7 @@ class OrderController extends Controller
 
         DB::beginTransaction();
         try {
+
           $order =  Order::create($data);
           $orderId = $order->id;
           $data = [];
@@ -53,10 +55,23 @@ class OrderController extends Controller
             $data[] = [
                 'order_id' => $orderId,
                 'product_id' => $productId,
-                'qty' => $qty
+                'qty' => $qty,
             ];
-          }
-          $order->products()->sync($data);
+        }
+        $order->products()->sync($data);
+        // dd($order->products()->qty);
+        // foreach ($data as $item) {
+        //     dd($item['qty']);
+        //  };
+
+        //   foreach ($order->products as $product) {
+        //     dd($product->inventory);
+        //  };
+
+
+
+
+
             DB::commit();
             event(new CreateOrder($order,$data));
             $request->session()->forget('cart');

@@ -16,6 +16,7 @@ class Order extends Model
         'address',
         'note',
         'slug',
+        'total_price',
     ];
 
     /**

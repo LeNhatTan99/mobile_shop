@@ -36,17 +36,21 @@
 
     <section class="shop_section layout_padding">
         @if ($products->count())
-
         <div class="container">
+            <div class="heading_container heading_center">
+                <h1>
+                    Sản phẩm nổi bật
+                </h1>
+            </div>
             <div class="row">
                     @foreach ( $products as $category=> $items  )
-
-                    <div class="heading_container " id="danhmucid1">
+                    <div class="heading_container ">
                         <h2>
                             {{$category}}
                         </h2>
+
                     </div>
-                    @foreach ($items as $product)
+                    @foreach ($items->take(8) as $product)
                     <div class="col-sm-6 col-xl-3">
                         <div class="box">
                             <a href="{{route('product.detail',[$product->slug])}}">
@@ -104,7 +108,6 @@
                                     @endif
                                  </div>
                                </div>
-
                             </a>
                         </div>
                     </div>

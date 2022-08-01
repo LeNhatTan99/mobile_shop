@@ -42,6 +42,7 @@ class OrderController extends Controller
                         'phone_number'=>$order->phone_number,
                         'email'=>$order->email,
                         'created_at'=>$order->created_at,
+                        'total_price'=>$order->total_price,
                         'status'=>$order->status,
                         'note'=>$order->note,
                     ];

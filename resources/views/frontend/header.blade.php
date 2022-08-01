@@ -3,11 +3,10 @@
 <header class="header_section sticky-top navbar-expand-lg">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <h1 class="navbar-brand" >
                 <a class="navbar-brand" href="{{route('home')}}">
                     Mobile shop
                 </a>
-            </h1>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class=""> </span>
@@ -70,7 +69,7 @@
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                     @if(isset(Session::get('cart')->totalQty))
                                     <strong id="count">{{Session::get('cart')->totalQty}}</strong>
-                                    @else <strong>0</strong>
+
                                     @endif
                                 </a>
                             </li>
@@ -84,8 +83,8 @@
                                 <a class="nav-link pr-0 pl-0 profile_link" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                    <i class="fa fa-user" aria-hidden="true"></i>
                                     <div class="media-body ml-2 d-none d-lg-block">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
                                         <strong class="mb-0 text-md profile_span font-weight-bold">
                                             {{ auth()->user()->name }}</strong>
                                     </div>

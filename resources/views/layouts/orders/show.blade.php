@@ -55,14 +55,20 @@
         <td>{{$product->product_name}}</td>
         <td>{{$product->qty}}</td>
         @if($product->discount > 0)
-        <td>{{number_format($product->discount)}} đ</td>
-        <td>{{number_format($product->discount * $product->qty)}} đ</td>
+        <td>{{number_format($product->discount)}} &#8363;</td>
+        <td>{{number_format($product->discount * $product->qty)}} &#8363;</td>
         @else
-        <td>{{number_format($product->price)}} đ</td>
-        <td>{{number_format($product->price * $product->qty)}} đ</td>
+        <td>{{number_format($product->price)}} &#8363;</td>
+        <td>{{number_format($product->price * $product->qty)}} &#8363;</td>
         @endif
     </tr>
         @endforeach
+        <tr>
+            <th >Tổng thanh toán:</th>
+            <th></th>
+            <th></th>
+            <th>{{$info['total_price']}} &#8363;</th>
+        </tr>
     </table>
 </div>
 </div>

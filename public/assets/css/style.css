@@ -50,15 +50,12 @@ body {
 
         }
 
-
-.heading_container h2 {
+.heading_container h1,h2 {
   position: relative;
   font-weight: bold;
 margin-top: 24px;
 }
-.heading h2 {
 
-}
 
 .heading_container h2 span {
   color: #f0d43a;
@@ -166,16 +163,15 @@ a:focus {
   padding-left: 0;
 }
 
- .header_section {
-  -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
-          box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
-}
+
 
 .header_section {
-  padding:0 48px;
+  padding:10px 50px;
   background-image: linear-gradient(to right, #6047DF , #E5CCC3);
   font-size: 15px;
   font-weight: bold;
+  -webkit-box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
 }
 
 .header_section .container-fluid {
@@ -186,7 +182,7 @@ a:focus {
 .navbar-brand{
     text-transform: uppercase;
 }
-.navbar-brand a {
+.navbar-brand  {
   font-weight: bold;
   color: #000000;
   font-size: 24px;
@@ -427,7 +423,7 @@ a:focus {
 }
 
 .shop_section .heading_container {
-  margin-bottom: 20px;
+  margin-top: 24px;
 }
 
 .shop_section .box {
@@ -1168,6 +1164,8 @@ object-fit: cover;
 }
 
 .thumbnail-info-order{
+    min-height: 1000px;
+    padding-bottom: 24px;
     margin: 40px auto;
     width: 50%;
     border-radius: 10px;

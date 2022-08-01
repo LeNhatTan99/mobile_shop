@@ -59,7 +59,7 @@
                     <form action="{{ route('sendMail') }}" method="post" class="resign_form">
                     @csrf
                     <input type="email" name="email" placeholder="Nhập email của bạn" class="form-control" required>
-                    <button type="submit" class="btn-submit">Gửi Thông Báo Mail</button>
+                    <button type="submit" class="btn-submit">Đăng ký</button>
                     </form>
                 </div>
             </div>

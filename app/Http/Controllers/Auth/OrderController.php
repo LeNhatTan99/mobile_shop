@@ -14,9 +14,17 @@ class OrderController extends Controller
         $orders = Order::join('order_product','orders.id','=','order_product.order_id')
                         ->join('products','products.id','=','order_product.product_id')
                         ->where('orders.name',auth()->user()->name)
-                        ->get($col)->groupBy('id') ;
-    return view('profile.profile_cart',['orders'=>$orders]);
+                        ->get($col) ;
+                        $info=[];
+                        foreach($orders as $order){
+                          $info = [
+                                    'created_at'=>$order->created_at,
+                                    'total_price'=>$order->total_price,
+                                   'status'=>$order->status,
+                                    'note'=>$order->note,
+                                ];
+                            }
+    return view('profile.profile_cart',['orders'=>$orders->groupBy('id'),'info'=>$info]);
     }
-
 
 }

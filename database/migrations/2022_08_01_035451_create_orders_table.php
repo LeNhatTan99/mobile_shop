@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('phone_number');
-            $table->mediumText('slug');
+            $table->string('total_price');
             $table->longText('note')->nullable();
             $table->timestamps();
         });

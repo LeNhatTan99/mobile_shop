@@ -18,7 +18,7 @@ class Cart
         }
     }
 
-    public function addCart(  $product,$id){
+    public function addCart( $product,$id){
         if($product->discount > 0 ){
             $price = $product->discount;
         } else {
@@ -27,7 +27,8 @@ class Cart
         $newProduct = ['qty'=> 0,'price'=>$price ,'productInfo'=> $product];
         if($this->products){
             if(array_key_exists($id, $this->products)){
-                $newProduct = $this->products[$id] ;
+                // $newProduct = $this->products[$id] ;
+                return back()->with('error','Sản phẩm đã có trong giỏ hàng');
             };
         }
         $newProduct['qty']++;
@@ -57,7 +58,7 @@ class Cart
 
         $this->totalQty += $this->products[$id]['qty'];
         $this->totalPrice += $this->products[$id]['price'];
-      
+
 }
 
 

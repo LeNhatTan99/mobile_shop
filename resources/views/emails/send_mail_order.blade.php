@@ -10,7 +10,7 @@
     @foreach (Session::get('cart')->products as $product )
     <p> <strong>Tên sản phẩm:</strong> {{$product['productInfo']->name}},
         <strong>số lượng: {{$product['qty']}} </strong>,
-        <strong>đơn giá: {{$product['price']}} &#8363;</strong></p>
+        <strong>đơn giá: {{number_format($product['price'])}} &#8363;</strong></p>
     @endforeach
 <p>Tổng tiền: {{number_format(Session::get('cart')->totalPrice)}} &#8363;</p>
 <p>Ghi chú: {{$order->note}}</p>

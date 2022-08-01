@@ -11,28 +11,18 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Events\CreateOrder;
-
+use Session;
 
 class OrderController extends Controller
 {
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
 
     {
         return view('frontend.orders.order_create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
@@ -42,7 +32,7 @@ class OrderController extends Controller
             'email'=>$request->email,
             'address'=>$request->address,
             'note'=>$request->note,
-            'slug' => Str::slug($request->name),
+            'total_price' => $request->total_price,
         ];
 
         DB::beginTransaction();
@@ -57,20 +47,11 @@ class OrderController extends Controller
                 'product_id' => $productId,
                 'qty' => $qty,
             ];
+            $product = Product::find($productId);
+            $newInventory= $product->inventory - $qty;
+            $product->update(['inventory' => $newInventory]);
         }
         $order->products()->sync($data);
-        // dd($order->products()->qty);
-        // foreach ($data as $item) {
-        //     dd($item['qty']);
-        //  };
-
-        //   foreach ($order->products as $product) {
-        //     dd($product->inventory);
-        //  };
-
-
-
-
 
             DB::commit();
             event(new CreateOrder($order,$data));
@@ -83,6 +64,7 @@ class OrderController extends Controller
             return back()->with('error', 'Đặt hàng thất bại');
         }
     }
+
 
     public function checkoutSuccess(){
         return view('frontend.orders.order_success');

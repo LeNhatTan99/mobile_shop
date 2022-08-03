@@ -18,20 +18,7 @@
                     </li>
                     <li class="nav-item">
                         <ul class="navbar-nav align-items-center d-none d-md-flex">
-                            {{-- <li class="nav-item dropdown ">
-                                <a class="nav-link  profile_link" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                         Danh mục sản phẩm
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right text-center">
-                                        @foreach ($categories as $category )
-                                        <a href="{{route('get.list.product',[$category->slug])}}" >
-                                            <span class="profile_span">{{ $category->category_name }}</span>
-                                        </a>
-                                        <div class="dropdown-divider"></div>
-                                        @endforeach
-                                </div>
-                            </li> --}}
+
                             <li class="nav-item dropdown ">
                                 <a class="dropbtn nav-link  profile_link" href="#"    >
                                          Danh mục sản phẩm

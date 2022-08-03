@@ -48,7 +48,6 @@
                         <h2>
                             {{$category}}
                         </h2>
-
                     </div>
                     @foreach ($items->take(8) as $product)
                     <div class="col-sm-6 col-xl-3">

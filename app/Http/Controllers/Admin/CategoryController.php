@@ -60,12 +60,12 @@ class CategoryController extends Controller
         try {
             Category::create($data);
             DB::commit();
-            return redirect()->route('categories.index')->with('success', 'Create category success');;
+            return redirect()->route('categories.index')->with('success', 'Tạo danh mục sản phẩm thành công');;
         } catch (\Exception $e) {
             //throw $th;
             Log::error($e->getMessage());
             DB::rollBack();
-            return back()->with('error', 'Create category failed');
+            return back()->with('error', 'Tạo danh mục sản phẩm thất bại');
         }
     }
 
@@ -77,7 +77,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-      
+
         return view('layouts.categories.show', ['category' => $category]);
     }
 
@@ -111,11 +111,11 @@ class CategoryController extends Controller
            try {
                $category->update($data);
                DB::commit();
-            return redirect()->route('categories.index')->with('success', 'Update category success');;
+            return redirect()->route('categories.index')->with('success', 'Cập nhật danh mục sản phẩm thành công');;
         } catch (\Exception $e) {
             //throw $th;
             Log::error($e->getMessage());
-            return back()->with('error', 'Update category failed');
+            return back()->with('error', 'Cập nhật danh mục sản phẩm thất bại');
         }
     }
 
@@ -130,11 +130,11 @@ class CategoryController extends Controller
 
         try {
             $category->delete();
-            return redirect()->route('categories.index')->with('success', 'Delete category success');;
+            return redirect()->route('categories.index')->with('success', 'Xoá danh mục sản phẩm thành công');;
         } catch (\Exception $e) {
             //throw $th;
             Log::error($e->getMessage());
-            return back()->with('error', 'Delete category failed');
+            return back()->with('error', 'Xoá danh mục sản phẩm thất bại');
         }
     }
 }

@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @section('content')
-
+<h2 class="my-4 text-center text-uppercase">Quản lý phản hồi của khách hàng</h2>
 @if ($feedbacks->count())
 
 <table class="table">
-    <h2>Phản hồi của khách hàng</h2>
     <thead>
       <tr>
         <th scope="col">#</th>

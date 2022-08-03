@@ -5,12 +5,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <h1 class="text-success"> Mobile Shop</h1>
-        </a>
-        <h1 class="text-danger">Admin</h1>
+        
         <!-- User -->
+        <a class=" navbar-brand pt-3" href="{{ route('admin') }}">
+            <h1 class="text-danger"> Admin</h1>
+        </a>
         <ul class="nav align-items-center d-md-none">
+
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">

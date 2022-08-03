@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @section('content')
-
+<h2 class="my-4 text-center text-uppercase">Quản lý người dùng</h2>
 <a href="{{route('users.create')}}" class="btn btn-success">Tạo thêm người dùng</a>
 @if ($users->count())
-
 <table class="table">
     <thead>
       <tr>

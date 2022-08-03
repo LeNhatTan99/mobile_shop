@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<h2 class="my-4 text-center text-uppercase">Quản lý danh mục sản phẩm</h2>
 <a href="{{route('categories.create')}}" class="btn btn-success">Tạo thêm danh mục sản phẩm</a>
 @if ($categories->count())
 

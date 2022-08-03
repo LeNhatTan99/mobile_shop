@@ -28,6 +28,7 @@ Route::get('cart/order/checkout-success', 'App\Http\Controllers\Public\OrderCont
 
 //Member
 Route::group(['middleware' => 'auth'], function() {
+
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
@@ -39,6 +40,9 @@ Route::group(['middleware' => 'auth'], function() {
 
 //Admin
 Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:admin']], function() {
+    Route::get('/', function(){
+        return view('layouts.app');
+    })->name('admin');
     Route::resource('users','App\Http\Controllers\Admin\UserController');
     Route::resource('categories','App\Http\Controllers\Admin\CategoryController');
     Route::resource('brands','App\Http\Controllers\Admin\BrandController');

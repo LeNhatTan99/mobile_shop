@@ -11,7 +11,9 @@
                 </div>
                 <div class="row">
                     @foreach ( $products as $brand => $items )
-                    <h2>{{$brand}}</h2>
+                    <div class="heading_container ">
+                            <h2>{{$brand}}</h2>
+                    </div>
                     @foreach ($items as $product)
                     <div class="col-sm-6 col-xl-3">
                         <div class="box">

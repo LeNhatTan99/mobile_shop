@@ -10,21 +10,13 @@ use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
 {
     public function showProfileOrder(){
-        $col = ['order_product.qty','orders.*' ,DB::raw('products.name as product_name,price,discount')];
+        $col = ['order_product.qty','orders.*' ,DB::raw('products.name as product_name,price,discount,thumbnail')];
         $orders = Order::join('order_product','orders.id','=','order_product.order_id')
                         ->join('products','products.id','=','order_product.product_id')
-                        ->where('orders.name',auth()->user()->name)
+                        ->where('orders.email',auth()->user()->email)
                         ->get($col) ;
-                        $info=[];
-                        foreach($orders as $order){
-                          $info = [
-                                    'created_at'=>$order->created_at,
-                                    'total_price'=>$order->total_price,
-                                   'status'=>$order->status,
-                                    'note'=>$order->note,
-                                ];
-                            }
-    return view('profile.profile_cart',['orders'=>$orders->groupBy('id'),'info'=>$info]);
+                          
+    return view('profile.profile_cart',['orders'=>$orders->groupBy('id')]);
     }
 
 }

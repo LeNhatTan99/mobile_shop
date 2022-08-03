@@ -20,7 +20,6 @@
         </div>
     </div>
 </div>
-
     <!-- Shopping Cart Section Begin -->
 <section class="shopping-cart spad">
     <div class="container">
@@ -39,7 +38,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
                             @foreach (Session::get('cart')->products as $product )
                             <div id="change-item-cart">
                             <tr>

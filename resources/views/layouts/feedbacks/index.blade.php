@@ -24,11 +24,11 @@
           <td><span class="description">{{$feedback->content}}</span></td>
 
         <td>
-            <a href="{{route('feedbacks.show',['feedback'=>$feedback->id])}}" class="btn btn-info">View</a>
+            <a href="{{route('feedbacks.show',['feedback'=>$feedback->id])}}" class="btn btn-info">Xem</a>
             <form action="{{route('feedbacks.destroy',['feedback'=>$feedback->id])}}" method="POST" style="display: inline-block">
             @csrf
             @method('delete')
-                <button class="btn btn-danger" type="submit">Delete</button>
+                <button class="btn btn-danger" type="submit">Xoá</button>
             </form>
         </td>
     </tr>

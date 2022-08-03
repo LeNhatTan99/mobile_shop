@@ -11,7 +11,9 @@
         @if ($products->count())
         <div class="row">
             @foreach ( $products as $category => $items )
+            <div class="heading_container ">
                 <h2>{{$category}}</h2>
+        </div>
                 @foreach ($items as $product)
                 <div class="col-sm-6 col-xl-3">
                     <div class="box">

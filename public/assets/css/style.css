@@ -109,15 +109,39 @@ a:focus {
 .dropdown-menu{
  background-color: #fff;
  min-width: 10rem;
- margin: 0;
+ margin: 2px;
 }
 .dropdown-menu a {
     font-weight: bold;
     color: black;
 }
-.dropdown-menu a:hover{
-    color: purple
-}
+
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    border: #ddd 1px solid;
+  }
+
+
+  .dropdown-content a {
+    color: black;
+    padding: 8px 12px ;
+    text-decoration: none;
+    display: block;
+    border: #ddd 1px solid;
+  }
+  .dropdown-content a:hover {background-color: #ddd;}
+  .dropdown:hover .dropdown-content {display: block;}
+
+
+
 
 /*header section*/
 .hero_area {

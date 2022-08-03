@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<h2 class="my-4 text-center text-uppercase">Quản lý thương hiệu</h2>
 <a href="{{route('brands.create')}}" class="btn btn-success">Tạo thêm thương hiệu</a>
 @if ($brands->count())
 

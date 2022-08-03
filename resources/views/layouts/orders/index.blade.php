@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-
+<h2 class="my-4 text-center text-uppercase">Quản lý đơn hàng</h2>
 @if ($orders->count())
 
 <table class="table">

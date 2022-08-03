@@ -23,7 +23,7 @@ class BrandController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'logo'=>['required', 'image'],
-            
+
         ]);
     }
     protected function storeImage(Request $request) {
@@ -74,12 +74,12 @@ class BrandController extends Controller
             Brand::create($data);
 
       DB::commit();
-            return redirect()->route('brands.index')->with('success', 'Create brand success');;
+            return redirect()->route('brands.index')->with('success', 'Tạo thương hiệu thành công');;
         } catch (\Exception $e) {
             //throw $th;
             Log::error($e->getMessage());
             DB::rollBack();
-            return back()->with('error', 'Create brand failed');
+            return back()->with('error', 'Tạo thương hiệu thất bại');
         }
     }
 
@@ -127,11 +127,11 @@ class BrandController extends Controller
             ];
             $brand->update($data);
             DB::commit();
-         return redirect()->route('brands.index')->with('success', 'Update brand success');;
+         return redirect()->route('brands.index')->with('success', 'Cập nhật thương hiệu thành công');;
      } catch (\Exception $e) {
          //throw $th;
          Log::error($e->getMessage());
-         return back()->with('error', 'Update brand failed');
+         return back()->with('error', 'Cập nhật thương hiệu thất bại');
      }
     }
 
@@ -145,11 +145,11 @@ class BrandController extends Controller
     {
         try {
             $brand->delete();
-            return redirect()->route('brands.index')->with('success', 'Delete brand success');;
+            return redirect()->route('brands.index')->with('success', 'Xoá thương hiệu thành công');;
         } catch (\Exception $e) {
             //throw $th;
             Log::error($e->getMessage());
-            return back()->with('error', 'Delete brand failed');
+            return back()->with('error', 'Xoá thương hiệu thất bại');
         }
     }
 }

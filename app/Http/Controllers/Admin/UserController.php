@@ -58,11 +58,11 @@ class UserController extends Controller
        try {
             $user = User::create($data);
             DB::commit();
-            return redirect()->route('users.index')->with('success', 'Create user success');
+            return redirect()->route('users.index')->with('success', 'Tạo tài khoản thành công');
        } catch (\Exception $e) {
             Log::error($e->getMessage());
             DB::rollBack();
-            return back()->with('error', 'Create user failed');
+            return back()->with('error', 'Tạo tài khoản thất bại');
        }
     }
 
@@ -106,10 +106,10 @@ class UserController extends Controller
         try {
             $user->update($data);
             DB::commit();
-            return redirect()->route('users.index')->with('success', 'Update user success');
+            return redirect()->route('users.index')->with('success', 'Cập nhật tài khoản thành công');
         } catch (\Exception $e) {
             Log::error($e->getMessage());
-            return back()->with('error', 'Update user failed');
+            return back()->with('error', 'Cập nhật tài khoản thất bại');
         }
     }
 
@@ -123,11 +123,11 @@ class UserController extends Controller
     {
         try {
             $user->delete();
-            return redirect()->route('users.index')->with('success', 'Delete role success');
+            return redirect()->route('users.index')->with('success', 'Xoá tài khoản thành công');
         } catch (\Exception $e) {
             //throw $th;
             Log::error($e->getMessage());
-            return back()->with('error', 'Delete role failed');
+            return back()->with('error', 'Xoá tài khoản thất bại');
         }
     }
 }

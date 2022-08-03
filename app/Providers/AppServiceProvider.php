@@ -19,10 +19,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
-
-
-
-
     /**
      * Bootstrap any application services.
      *
@@ -37,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
             $view ->with('categories',$categories);
             $view ->with('brands',$brands);
             $view ->with('products',$products);
-
         });
         Paginator::useBootstrap();
 

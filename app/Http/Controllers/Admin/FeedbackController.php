@@ -55,11 +55,11 @@ class FeedbackController extends Controller
 
         try {
             $feedback->delete();
-            return redirect()->route('feedbacks.index')->with('success', 'Delete feedback success');;
+            return redirect()->route('feedbacks.index')->with('success', 'Xoá phản hồi thành công');;
         } catch (\Exception $e) {
             //throw $th;
             Log::error($e->getMessage());
-            return back()->with('error', 'Delete feedback failed');
+            return back()->with('error', 'Xoá phản hồi thất bại');
         }
     }
 }

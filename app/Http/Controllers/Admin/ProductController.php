@@ -99,12 +99,12 @@ class ProductController extends Controller
           $product->brands()->sync($request->brandIds);
         $fileName = $request->file('thumbnail')->storeAs('mobile_image/product_images', Str::slug($request->name).'.'.'jpg');
             DB::commit();
-            return redirect()->route('products.index')->with('success', 'Create product success');
+            return redirect()->route('products.index')->with('success', 'Tạo sản phẩm thành công');
         } catch (\Exception $e) {
             //throw $th;
             Log::error($e->getMessage());
             DB::rollBack();
-            return back()->with('error', 'Create product failed');
+            return back()->with('error', 'Tạo sản phẩm thất bại');
         }
     }
 
@@ -169,32 +169,24 @@ class ProductController extends Controller
            $product->brands()->sync($request->brandIds);
            $fileName = $request->file('thumbnail')->storeAs('mobile_image/product_images', Str::slug($request->name).'.'.'jpg');
              DB::commit();
-             return redirect()->route('products.index')->with('success', 'Create product success');
+             return redirect()->route('products.index')->with('success', 'Cập nhật sản phẩm thành công');
          } catch (\Exception $e) {
              //throw $th;
              Log::error($e->getMessage());
              DB::rollBack();
-             return back()->with('error', 'Create product failed');
+             return back()->with('error', 'Cập nhật sản phẩm thất bại');
          }
     }
 
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
         try {
             $product->delete();
-            return redirect()->route('products.index')->with('success', 'Delete product success');;
+            return redirect()->route('products.index')->with('success', 'Xoá sản phẩm thành công');;
         } catch (\Exception $e) {
             //throw $th;
             Log::error($e->getMessage());
-            return back()->with('error', 'Delete product failed');
+            return back()->with('error', 'Xoá sản phẩm thất bại');
         }
     }
 

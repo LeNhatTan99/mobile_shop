@@ -12,7 +12,7 @@
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                       alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
                     <h5> <i class="ni location_pin mr-2"></i>{{ auth()->user()->name}}</h5>
-                    <p> <i class="ni location_pin mr-2"></i>{{ auth()->user()->address}}</p>
+                    <p>  {{ auth()->user()->address}}</p>
                   </div>
                   <div class="col-md-8">
                     <div class="card-body p-4">
@@ -29,7 +29,6 @@
                           <p class="text-muted">{{ auth()->user()->phone_number}}</p>
                         </div>
                       </div>
-                      <h6>Order</h6>
                       <hr class="mt-0 mb-4">
                       <div class="row pt-1">
                       </div>

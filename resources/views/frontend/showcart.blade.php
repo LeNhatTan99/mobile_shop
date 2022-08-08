@@ -46,13 +46,11 @@
                                     <h5>{{$product['productInfo']->name}} </h5>
                                 </td>
                                 <td class="qua-col">
-                                    <div class="quantity">
                                         <div class="pro-qty">
                                                 <input  type="number" min="1" value="{{$product['qty']}}" onchange="updateItemCart(this)" name="qty[{{$product['productInfo']->id}}][]"  id="{{ $product['productInfo']->id }}">
                                             </div>
-                                        </div>
+                                    </td>
                                     </div>
-                                </td>
                                 <td class="total-price">{{number_format($product['price'])}} &#8363;</td>
                                 <td class="close-td"><a href="{{route('delete.cart',$product['productInfo']->id)}}" class="btn btn-danger">X</a></td>
                             </tr>

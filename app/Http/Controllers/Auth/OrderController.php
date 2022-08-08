@@ -15,7 +15,6 @@ class OrderController extends Controller
                         ->join('products','products.id','=','order_product.product_id')
                         ->where('orders.email',auth()->user()->email)
                         ->get($col) ;
-                          
     return view('profile.profile_cart',['orders'=>$orders->groupBy('id')]);
     }
 

@@ -21,8 +21,9 @@ class CategoryController extends Controller
             ->join('brand_product', 'products.id', '=', 'brand_product.product_id')
             ->join('brands', 'brands.id', '=', 'brand_product.brand_id')
             ->where('categories.slug', $slug)
-            ->orderBy('products.discount', 'desc')
-            ->orderBy('products.price','desc')
+                ->orderBy('brands.name','asc')
+                ->orderBy('products.status','desc')
+                ->orderBy('products.discount', 'desc')
             ->get($col);
     $viewable = Category::VIEWABLE;
     return view("frontend.categories.{$viewable[$slug]}",['products' => $products->groupBy('brandName')]);

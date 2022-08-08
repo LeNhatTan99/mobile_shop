@@ -29,10 +29,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('frontend.app',function($view){
             $categories = Category::get();
             $brands = Brand::get();
-            $products = Product::get();
             $view ->with('categories',$categories);
             $view ->with('brands',$brands);
-            $view ->with('products',$products);
         });
         Paginator::useBootstrap();
 

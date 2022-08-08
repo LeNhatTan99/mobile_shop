@@ -22,8 +22,9 @@ class HomeController extends Controller
         $col = ['products.*',  DB::raw('categories.category_name ,categories.slug as category_slug')];
         $products = Product::join('category_product', 'products.id', '=', 'category_product.product_id' )
                 ->join('categories', 'category_product.category_id', '=', 'categories.id')
+                ->orderBy('categories.category_name','asc')
+                ->orderBy('products.status','desc')
                 ->orderBy('products.discount', 'desc')
-                ->orderBy('products.price','desc')
                 ->get($col);
         return view('frontend.index',['products' => $products->groupBy('category_name')]);
     }

@@ -6,13 +6,14 @@
             <h1 class="text-uppercase"> Mobile Shop</h1>
         </a>
         <!-- Form -->
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto"
+         method="get" action="{{route('admin.search')}}">
             <div class="form-group mb-0">
                 <div class="input-group input-group-alternative">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Tìm kiếm" type="text">
+                    <input class="form-control" placeholder="Tìm kiếm sản phẩm" type="text" name="searchProduct">
                 </div>
             </div>
         </form>

@@ -28,4 +28,13 @@ class HomeController extends Controller
                 ->get($col);
         return view('frontend.index',['products' => $products->groupBy('category_name')]);
     }
+
+    public function Search(Request $request)
+    {
+        $products = Product::where('name','like','%'. $request->searchInfo.'%')
+                    ->orderBy('status', 'desc')
+                    ->orderBy('discount', 'desc')
+                    ->get();
+        return view('frontend.search',['products'=>$products]);
+    }
 }

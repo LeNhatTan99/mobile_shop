@@ -50,6 +50,15 @@
                                             </tbody>
                                         </table>
 
+                                        <div class="col-lg-4 ">
+                                                    <p class="font-weight-bold">Trạng thái:
+                                                        @if($product->status == 1 )
+                                                           Đã xử lý
+                                                        @else
+                                                       Đang xử lý
+                                                        @endif
+                                                    </p>
+                                        </div>
                                             <div class="col-lg-4 offset-lg-8">
                                                 <div class="proceed-checkout">
                                                     <ul>

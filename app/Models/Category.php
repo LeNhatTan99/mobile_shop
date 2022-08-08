@@ -13,7 +13,6 @@ class Category extends Model
         'dien-thoai' => 'mobile',
         'may-tinh-bang' => 'tablet',
         'phu-kien' => 'accessory',
-        'new' => 'abc'
     ];
 
     protected $fillable=[

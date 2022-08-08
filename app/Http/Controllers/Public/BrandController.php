@@ -22,11 +22,12 @@ class BrandController extends Controller
             ->join('brand_product', 'products.id', '=', 'brand_product.product_id')
             ->join('brands', 'brands.id', '=', 'brand_product.brand_id')
             ->where('brands.slug', $slug)
+            ->orderBy('categories.category_name','asc')
+            ->orderBy('products.status','desc')
             ->orderBy('products.discount', 'desc')
-            ->orderBy('products.price','desc')
             ->get($col);
             $viewable = Brand::VIEWABLE;
-         
+
   return view("frontend.brands.{$viewable[$slug]}",['products' => $products->groupBy('category_name')]);
 }
 }

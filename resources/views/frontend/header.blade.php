@@ -52,11 +52,25 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Liên hệ</a>
-                    </li>
+
                 </ul>
                 <div class="user_option-box">
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto" method="get" action="{{route('search')}}">
+                                <div class="form-group mb-0">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <button type="submit" class="input-group-text"><i class="fas fa-search"></i></button>
+                                        </div>
+                                        <input name="searchInfo" class="form-control " placeholder="Tìm kiếm" type="text"
+                                        value="{{old('searchInfo')}}">
+                                    </div>
+                                </div>
+                            </form>
+                      </li>
+                    </ul>
 
                   <ul class="navbar-nav">
                       <li class="nav-item">
@@ -81,7 +95,7 @@
                                 <a class="nav-link pr-0 pl-0 profile_link" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                                    <div class="media-body ml-2 d-none d-lg-block">
+                                    <div class="media-body ml-2 d-none d-lg-block" style="display:inline-block">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                         <strong class="mb-0 text-md profile_span font-weight-bold">
                                             {{ auth()->user()->name }}</strong>

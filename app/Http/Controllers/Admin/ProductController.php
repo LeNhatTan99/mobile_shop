@@ -190,5 +190,11 @@ class ProductController extends Controller
         }
     }
 
+    public function Search(Request $request)
+    {
+        $products = Product::where('name','like','%'. $request->searchProduct.'%')
+                    ->get();
+        return view('layouts.products.search_product',['products'=>$products]);
+    }
 
 }

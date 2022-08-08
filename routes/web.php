@@ -11,6 +11,8 @@ Auth::routes();
 // Public
 Route::get('/', 'App\Http\Controllers\Public\HomeController@index')->name('home');
 Route::get('/home', 'App\Http\Controllers\Public\HomeController@index');
+Route::get('search','App\Http\Controllers\Public\HomeController@Search')->name('search');
+
 Route::get('category/{slug}', 'App\Http\Controllers\Public\CategoryController@getListProduct')->name('get.list.product');
 Route::get('product/{slug}', 'App\Http\Controllers\Public\ProductController@productDetail')->name('product.detail');
 Route::get('brand/{slug}', 'App\Http\Controllers\Public\BrandController@getListProduct')->name('brand.product');
@@ -23,7 +25,6 @@ Route::get('showCart', 'App\Http\Controllers\Public\CartController@showCart')->n
 Route::get('cart/order', 'App\Http\Controllers\Public\OrderController@create')->name('order');
 Route::get('cart/order/checkout', 'App\Http\Controllers\Public\OrderController@store')->name('checkout');
 Route::get('cart/order/checkout-success', 'App\Http\Controllers\Public\OrderController@checkoutSuccess')->name('checkout.success');
-
 
 
 //Member
@@ -47,6 +48,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:admin']], fun
     Route::resource('categories','App\Http\Controllers\Admin\CategoryController');
     Route::resource('brands','App\Http\Controllers\Admin\BrandController');
     Route::resource('products','App\Http\Controllers\Admin\ProductController');
+    Route::get('search','App\Http\Controllers\Admin\ProductController@Search')->name('admin.search');
     Route::resource('orders','App\Http\Controllers\Admin\OrderController');
     Route::resource('feedbacks','App\Http\Controllers\Admin\FeedbackController');
 });

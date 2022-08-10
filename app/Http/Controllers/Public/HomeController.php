@@ -31,10 +31,11 @@ class HomeController extends Controller
 
     public function Search(Request $request)
     {
-        $products = Product::where('name','like','%'. $request->searchInfo.'%')
+       $searchWord = $request->searchInfo;
+        $products = Product::where('name','like','%'. $searchWord.'%')
                     ->orderBy('status', 'desc')
                     ->orderBy('discount', 'desc')
                     ->get();
-        return view('frontend.search',['products'=>$products]);
+        return view('frontend.search',['products'=>$products, 'searchWord'=> $searchWord]);
     }
 }

@@ -64,7 +64,7 @@
                                         <div class="input-group-prepend">
                                             <button type="submit" class="input-group-text"><i class="fas fa-search"></i></button>
                                         </div>
-                                        <input name="searchInfo" class="form-control " placeholder="Tìm kiếm" type="text"
+                                        <input name="searchInfo" class="form-control " placeholder="Tìm kiếm SP" type="text"
                                         value="{{old('searchInfo')}}">
                                     </div>
                                 </div>

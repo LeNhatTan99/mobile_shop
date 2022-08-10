@@ -1,27 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-
-
 Auth::routes();
-
 
 
 // Public
 Route::get('/', 'App\Http\Controllers\Public\HomeController@index')->name('home');
 Route::get('/home', 'App\Http\Controllers\Public\HomeController@index');
 Route::get('search','App\Http\Controllers\Public\HomeController@Search')->name('search');
-
 Route::get('category/{slug}', 'App\Http\Controllers\Public\CategoryController@getListProduct')->name('get.list.product');
 Route::get('product/{slug}', 'App\Http\Controllers\Public\ProductController@productDetail')->name('product.detail');
 Route::get('brand/{slug}', 'App\Http\Controllers\Public\BrandController@getListProduct')->name('brand.product');
-            //Cart
+ //Cart
 Route::get('addCart/{id}', 'App\Http\Controllers\Public\CartController@addCart')->name('add.cart');
 Route::get('deleteItemCart/{id}', 'App\Http\Controllers\Public\CartController@deleteItemCart')->name('delete.cart');
 Route::get('updateItemCart/{id}/{qty}', 'App\Http\Controllers\Public\CartController@updateItemCart')->name('update.cart');
 Route::get('showCart', 'App\Http\Controllers\Public\CartController@showCart')->name('show.list.cart');
-
 Route::get('cart/order', 'App\Http\Controllers\Public\OrderController@create')->name('order');
 Route::get('cart/order/checkout', 'App\Http\Controllers\Public\OrderController@store')->name('checkout');
 Route::get('cart/order/checkout-success', 'App\Http\Controllers\Public\OrderController@checkoutSuccess')->name('checkout.success');
@@ -29,14 +23,12 @@ Route::get('cart/order/checkout-success', 'App\Http\Controllers\Public\OrderCont
 
 //Member
 Route::group(['middleware' => 'auth'], function() {
-
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
     Route::put('feedback','App\Http\Controllers\Auth\FeedbackController@store')->name('feedback');
     Route::get('profile/order','App\Http\Controllers\Auth\OrderController@showProfileOrder')->name('show.profile.order');
-
 });
 
 //Admin

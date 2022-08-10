@@ -1,62 +1,53 @@
-@extends('layouts.app', ['class' => 'bg-default'])
 
+@extends('frontend.app')
 @section('content')
-    @include('layouts.headers.guest')
-    
-    <div class="container mt--8 pb-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-7">
-                <div class="card bg-secondary shadow border-0">
-                    <div class="card-body px-lg-5 py-lg-5">
-                        <div class="text-center text-muted mb-4">
-                            <small>{{ __('Reset Password') }}</small>
+<section class="ftco-section">
+    <div class="container">
+
+        <div class="row justify-content-center thumbnail-form">
+            <div class="col-md-12 col-lg-10">
+
+                    <div class=" p-4 p-lg-5 col-12">
+                  <div class="d-flex">
+                      <div class="w-100">
+                          <h3 class="mb-4 text-center"><strong>Reset mật khẩu</strong></h3>
+                      </div>
+                  </div>
+                        <form role="form" method="POST" action="{{ route('password.update') }}" class="signin-form">
+                        @csrf
+                        <input type="hidden" name="token" value="{{ $token }}">
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
+                                <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ $email ?? old('email') }}" required autofocus>
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
                         </div>
-                        <form role="form" method="POST" action="{{ route('password.update') }}">
-                            @csrf
 
-                            <input type="hidden" name="token" value="{{ $token }}">
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ $email ?? old('email') }}" required autofocus>
-                                </div>
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Password') }}" type="password" required>
-                                </div>
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                    </div>
-                                    <input class="form-control" placeholder="{{ __('Confirm Password') }}" type="password" name="password_confirmation" required>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4">{{ __('Reset Password') }}</button>
-                            </div>
-                        </form>
-                    </div>
+                <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                        <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Mật khẩu') }}" type="password" required>
+                    @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
                 </div>
+                <div class="form-group">
+                        <input class="form-control" placeholder="{{ __('Nhập lại mật khẩu') }}" type="password" name="password_confirmation" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="form-control btn btn-login submit px-3"><strong>Reset mật khẩu</strong></button>
+                </div>
+              </form>
+
+          </div>
             </div>
-        </div>
+
     </div>
+</section>
 @endsection
+
+

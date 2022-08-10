@@ -5,7 +5,6 @@ namespace App;
 
 class Cart
 {
-
     public $products = null;
     public $totalPrice = 0;
     public $totalQty = 0;

@@ -11,7 +11,7 @@
             @if($products->count())
 
             <div class="heading_container ">
-                <h3>Tìm thấy {{$products->count()}} sản phẩm</h3>
+                <h3>Tìm thấy <strong>{{$products->count()}}</strong> sản phẩm cho từ khoá <strong>"{{$searchWord}}"</strong></h3>
             </div>
             <div class="row">
                 @foreach ( $products as $product)
